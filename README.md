@@ -2,9 +2,6 @@
 
 ## Installed packages/applications
 
-### disk usage analyzer
-
-
 2022-10-19 09:59:48	gcc-libs
 2022-10-19 09:59:48	glibc
 2022-10-19 09:59:48	iana-etc
@@ -437,12 +434,12 @@
 2022-10-19 11:29:21	qt5-quickcontrols
 2022-10-19 11:29:21	qt5-quickcontrols2
 2022-10-19 11:29:25	papirus-icon-theme
-2022-10-19 11:29:26	noto-fonts
+2022-10-19 11:29:26	noto-fonts	
 2022-10-19 11:29:26	noto-fonts-cjk
 2022-10-19 11:29:27	noto-fonts-extra
 2022-10-19 11:30:21	yay
 2022-10-19 11:30:25	ttf-liberation
-2022-10-19 11:30:50	google-chrome
+ - 2022-10-19 11:30:50	google-chrome
 2022-10-19 11:31:40	nordic-theme
 2022-10-19 12:57:44	java-runtime-common
 2022-10-19 12:57:44	libnet
@@ -478,7 +475,7 @@
 2022-10-19 13:13:29	libxfce4util
 2022-10-19 13:13:29	thunar
 2022-10-19 13:13:29	xfconf
-2022-10-19 13:36:55	xf86-video-amdgpu
+ - 2022-10-19 13:36:55	xf86-video-amdgpu
 2022-10-19 13:41:03	containerd
 2022-10-19 13:41:03	runc
 2022-10-19 13:51:17	owncloud-client
@@ -493,9 +490,9 @@
 2022-10-19 14:54:00	python-platformdirs
 2022-10-19 14:54:00	python-virtualenv-clone
 2022-10-19 14:54:00	python-virtualenvwrapper
-2022-10-19 15:23:57	blueman
-2022-10-19 15:24:20	bluez
-2022-10-19 15:25:15	bluez-utils
+ - 2022-10-19 15:23:57	blueman
+ - 2022-10-19 15:24:20	bluez
+ - 2022-10-19 15:25:15	bluez-utils
 2022-10-19 15:27:18	libcurl-gnutls
 2022-10-19 15:28:10	spotify
 2022-10-19 15:33:51	fftw
@@ -503,7 +500,7 @@
 2022-10-19 15:33:51	libsoxr
 2022-10-19 15:33:51	openmpi
 2022-10-19 15:33:51	openpmix
-2022-10-19 15:33:51	pulseaudio-bluetooth
+ - 2022-10-19 15:33:51	pulseaudio-bluetooth
 2022-10-19 15:33:51	sbc
 2022-10-19 15:33:51	webrtc-audio-processing
 2022-10-19 15:42:43	atkmm
@@ -838,7 +835,7 @@
 2022-10-23 14:53:35	vte-common
 2022-10-23 14:53:35	xfsprogs
 2022-10-23 15:04:56	tumbler
-2022-10-23 22:35:20	numlockx
+ - 2022-10-23 22:35:20	numlockx
 2022-10-23 22:37:57	fontconfig
 2022-10-23 22:38:02	qt5-base
 2022-10-23 22:38:02	ttf-ubuntumono-nerd
@@ -850,7 +847,7 @@
 2022-10-24 08:45:54	libimagequant
 2022-10-24 08:45:54	python-pillow
 2022-10-24 08:45:54	tlp-rdw
-2022-10-24 08:46:04	slimbookbattery
+ - 2022-10-24 08:46:04	slimbookbattery
 2022-10-24 11:38:42	garcon
 2022-10-24 11:38:42	libwnck3
 2022-10-24 11:38:42	libxres
@@ -870,7 +867,59 @@
 2022-10-24 14:50:15	qt5-webengine
 2022-10-24 14:50:28	silos
 2022-10-24 14:50:39	silo-google-meet
-2022-10-24 16:04:37	gdu
+ - 2022-10-24 16:04:37	gdu
 2022-10-24 16:12:20	mailcap
-2022-10-24 16:12:21	firefox
+ - 2022-10-24 16:12:21	firefox
 2022-10-24 16:21:49	expac
+
+
+
+### GPU drivers
+[AMD Driver](https://archlinux.org/packages/extra/x86_64/xf86-video-amdgpu/)
+```bash
+pacman -S xf86-video-amdgpu
+```
+
+
+### Laptop specific tooling/fixes
+[Slimbook Battery](https://github.com/Slimbook-Team/slimbookbattery)
+```bash
+pacman -S slimbookbattery
+```
+
+[Activating numlock on boot](https://wiki.archlinux.org/title/Activating_numlock_on_bootup)
+```bash
+pacman -S numlockx
+```
+
+
+### Bluetooth
+[Bluetooth](https://wiki.archlinux.org/title/bluetooth)
+[Blueman](https://wiki.archlinux.org/title/Blueman)
+[Bluetooth headset](https://wiki.archlinux.org/title/bluetooth_headset)
+```bash
+	blueman \
+	bluez \
+	bluez-utils \
+	pulseaudio-bluetooth
+```
+
+ 
+### Browsers
+```bash
+pacman -S \
+	google-chrome \
+	firefox
+```
+
+
+### disk usage analyzer
+[go DiskUsage()](https://github.com/dundee/gdu)
+```bash
+pacman -S gdu
+```
+
+
+
+
+
