@@ -1,0 +1,23 @@
+xrdb $HOME/.config/X11/xresources
+
+# This rule is needed when no display manager is used (Removed sddm and use startx instead)
+dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY
+
+pgrep -x numlockx > /dev/null || numlockx &
+pgrep -x sxhkd > /dev/null || sxhkd &
+pgrep -x dunst > /dev/null || dunst &
+pgrep -x picom > /dev/null || picom &
+pgrep -x ntfd > /dev/null || ntfd &
+
+# activate screen locker
+
+xset s 300 20
+xss-lock -n /usr/lib/xsecurelock/dimmer -l -- env XSECURELOCK_NO_COMPOSITE=1 xsecurelock &
+
+# https://www.reddit.com/r/bspwm/comments/kf7077/no_cursor_on_startup_appears_when_opening_a/
+xsetroot -cursor_name left_ptr
+
+# Background color
+xsetroot -solid "#3B4252"
+
+exec bspwm

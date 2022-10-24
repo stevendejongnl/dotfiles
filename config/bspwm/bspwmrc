@@ -1,0 +1,41 @@
+#! /bin/sh
+
+CONNECTED_SPACE=$(autorandr --current)
+SPACE_LAPTOP="laptop"
+SPACE_OFFICE="office"
+SPACE_HOME="home"
+
+BSPWM_CONFIG=$HOME/.config/bspwm
+POLYBAR_CONFIG=$HOME/.config/polybar
+WALLPAPERS=$HOME/Pictures/wallpapers
+
+pgrep -x sxhkd > /dev/null || sxhkd &
+
+bspc config pointer_motion_interval 40
+
+if [ "$CONNECTED_SPACE" = "$SPACE_HOME" ]; then
+bspc monitor eDP -d 1 2 3
+bspc monitor HDMI-A-0 -d 4 5 6 7
+bspc monitor DisplayPort-0 -d 8 9 0
+
+elif [ "$CONNECTED_SPACE" = "$SPACE_OFFICE" ]; then
+bspc monitor eDP -d 1 2 3 4 5
+bspc monitor DisplayPort-0 -d 6 7 8 9 0
+
+else
+bspc monitor eDP -d 1 2 3 4 5 6 7 8 9 0
+
+fi
+
+source $BSPWM_CONFIG/rules.sh
+source $BSPWM_CONFIG/styling.sh
+source $POLYBAR_CONFIG/launch.sh
+
+# Autostart
+dex -a
+
+# Set wallpaper
+sleep 5
+RANDOM_WALLPAPER=$(find $WALLPAPERS/* -xtype f | shuf -n 1) &&
+	feh --bg-fill "$RANDOM_WALLPAPER"
+
