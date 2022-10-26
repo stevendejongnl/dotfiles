@@ -1,0 +1,3 @@
+#! /bin/zsh
+
+alias webshop_log="docker logs -f $(docker-compose -f $HOME/workspace/trydent/docker-compose.yml ps -q webshop)"
