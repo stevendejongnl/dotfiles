@@ -1,3 +1,5 @@
 #! /bin/zsh
 
 alias webshop_log="docker logs -f $(docker-compose -f $HOME/workspace/trydent/docker-compose.yml ps -q webshop)"
+alias clear_ram="sudo sh -c 'free -h; echo 3 > /proc/sys/vm/drop_caches; swapoff -a; swapon -a; free -h'"
+
