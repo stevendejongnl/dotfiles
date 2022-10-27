@@ -8,6 +8,7 @@ x-scheme-handler/jetbrains=jetbrains-toolbox.desktop
 x-scheme-handler/jetbrains-gateway=jetbrains-gateway.desktop
 inode/directory=thunar.desktop
 image/jpeg=org.nomacs.ImageLounge.desktop
+x-scheme-handler/eclipse+command=_usr_lib_dbeaver_.desktop
 
 [Added Associations]
 image/jpeg=org.nomacs.ImageLounge.desktop;mupdf.desktop;deepin-image-viewer.desktop;
