@@ -5,21 +5,20 @@ POLYBAR_CONFIG=$HOME/.config/polybar
 WALLPAPERS=$HOME/Pictures/wallpapers
 
 pgrep -x sxhkd > /dev/null || sxhkd &
-pgrep -x xfce4-clipman > /dev/null || xfce4-clipman &
-pgrep -x slimbookbattery > /dev/null || slimbookbattery &
 
-bspc config pointer_motion_interval 40
-
-source $BSPWM_CONFIG/workspaces.sh
-source $BSPWM_CONFIG/rules.sh
-source $BSPWM_CONFIG/styling.sh
-source $POLYBAR_CONFIG/launch.sh
+killall -q xfce4-clipman
+while pgrep -x xfce4-clipman >/dev/null; do sleep 1; done
+xfce4-clipman &
 
 # Autostart
 dex --autostart
 
 # Set wallpaper
-sleep 1
+sleep 3
 RANDOM_WALLPAPER=$(find $WALLPAPERS/* -xtype f | shuf -n 1) &&
 	feh --bg-fill "$RANDOM_WALLPAPER"
 
+source $BSPWM_CONFIG/workspaces.sh
+source $BSPWM_CONFIG/rules.sh
+source $BSPWM_CONFIG/styling.sh
+source $POLYBAR_CONFIG/launch.sh

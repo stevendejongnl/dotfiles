@@ -1,3 +1,5 @@
+bspc config pointer_motion_interval 40
+
 bspc config border_width         1
 bspc config window_gap           8
 
