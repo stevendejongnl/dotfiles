@@ -22,11 +22,14 @@
 #   Fills its monitor rectangle and has no borders.
 
 # Remove previous defined rules
-bspc rule -r "*"
 
-bspc config ignore_ewmh_focus true
+bspc config external_rules_command $BSPWM_CONFIG/external_rules.sh
 
-bspc rule -a Timer-for-harvest follow=off state=floating
-bspc rule -a Pavucontrol follow=off state=floating
-bspc rule -a Blueman-manager follow=off state=floating
+# bspc rule -r "*"
+
+# bspc config ignore_ewmh_focus true
+
+# bspc rule -a Timer-for-harvest follow=off state=floating
+# bspc rule -a Pavucontrol follow=off state=floating
+# bspc rule -a Blueman-manager follow=off state=floating
 
