@@ -7,13 +7,9 @@ consequences=$4
 
 main () {
     case "$class" in
-        google-chat-linux)
+        google-chat-linux|whatsapp-nativefier-d40211|TelegramDesktop)
             eval "$consequences"
-            [ "$state" ] || echo "desktop=^1 center=on follow=on rectangle=984x1062+0+0"
-            ;;
-        whatsapp-nativefier-d40211|TelegramDesktop)
-            eval "$consequences"
-            [ "$state" ] || echo "desktop=^1 center=on follow=on rectangle=908x510+0+0"
+            [ "$state" ] || echo "desktop=^1 center=on follow=on"
             ;;
         retroarch)
             eval "$consequences"
