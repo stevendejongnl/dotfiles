@@ -40,3 +40,22 @@ if [[ ! "$compare_aliases_file" =~ ^([nN][oO]|[nN])$ ]]; then
 		$DIFFTOOL "$REPODIR/aliases" "$HOME/.aliases"
 	fi
 fi
+
+read -r -p "Compare .vimrc file? [Y/n] " compare_vimrc_file
+if [[ ! "$compare_vimrc_file" =~ ^([nN][oO]|[nN])$ ]]; then
+	if [[ "${LOCAL_TO_REMOTE}" == "true" ]]; then
+		$DIFFTOOL "$HOME/.vimrc" "$REPODIR/vimrc"
+	else
+		$DIFFTOOL "$REPODIR/vimrc" "$HOME/.vimrc"
+	fi
+fi
+
+read -r -p "Compare .zprofile file? [Y/n] " compare_zprofile_file
+if [[ ! "$compare_zprofile_file" =~ ^([nN][oO]|[nN])$ ]]; then
+	if [[ "${LOCAL_TO_REMOTE}" == "true" ]]; then
+		$DIFFTOOL "$HOME/.zprofile" "$REPODIR/zprofile"
+	else
+		$DIFFTOOL "$REPODIR/zprofile" "$HOME/.zprofile"
+	fi
+fi
+
