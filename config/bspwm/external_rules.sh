@@ -11,10 +11,6 @@ main () {
             eval "$consequences"
             [ "$state" ] || echo "desktop=^1 center=on follow=on"
             ;;
-        retroarch)
-            eval "$consequences"
-            [ "$state" ] || echo "desktop=^2 center=on follow=on"
-            ;;
         Pavucontrol)
             eval "$consequences"
             [ "$state" ] || echo "state=floating follow=on center=on"
