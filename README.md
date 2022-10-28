@@ -1,5 +1,14 @@
 # dotfiles
 
+Dotfiles/Config files that work on my machine.
+
+
+## Easy compare/sync files
+```bash
+./compare.sh
+```
+
+
 ## Installed packages/applications
 Use expac for installed packages by time
 ```bash
