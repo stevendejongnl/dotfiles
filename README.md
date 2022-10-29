@@ -53,6 +53,20 @@ pacman -S \
 	pulseaudio-bluetooth
 ```
 
+
+### Fonts
+```bash
+pacman -S \
+	ttf-ubuntumono-nerd \
+	noto-fonts-emoji
+
+yay -S \
+	ttf-font-awesome-5 \
+	ttf-weather-icons \
+	ttf-material-icons-git \
+	siji-ttf
+```
+
  
 ### Browsers
 ```bash
