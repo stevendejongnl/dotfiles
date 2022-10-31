@@ -1,7 +1,7 @@
 bspc config pointer_motion_interval 40
 
 bspc config border_width         1
-bspc config window_gap           8
+bspc config window_gap           4
 
 bspc config normal_border_color "#2E3440"
 bspc config focused_border_color "#D8DEE9"
