@@ -11,7 +11,6 @@ pgrep -x ntfd > /dev/null || ntfd &
 pgrep -x lxpolkit > /dev/null || lxpolkit &
 
 # activate screen locker
-
 xset s 300 20
 xss-lock -n /usr/lib/xsecurelock/dimmer -l -- env XSECURELOCK_NO_COMPOSITE=1 xsecurelock &
 

@@ -22,7 +22,7 @@ super + @space
 
 # quit/restart bspwm
 super + alt + {q,r}
-    bspc {quit,wm -r}
+    bspc {quit,wm -r}; notify-send -i monitor 'bspwm' 'Reload'
 
 # close and kill
 super + {_,shift + }q
