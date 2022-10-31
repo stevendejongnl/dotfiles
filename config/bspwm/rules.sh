@@ -4,4 +4,3 @@
 # xprop | grep WM_CLASS
 
 bspc config external_rules_command $BSPWM_CONFIG/external_rules.sh
-
