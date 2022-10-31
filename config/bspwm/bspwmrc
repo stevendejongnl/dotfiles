@@ -6,10 +6,6 @@ WALLPAPERS=$HOME/Pictures/wallpapers
 
 pgrep -x sxhkd > /dev/null || sxhkd &
 
-killall -q xfce4-clipman
-while pgrep -x xfce4-clipman >/dev/null; do sleep 1; done
-xfce4-clipman &
-
 # Autostart
 dex --autostart
 
