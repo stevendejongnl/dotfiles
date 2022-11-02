@@ -5,6 +5,7 @@
 CONNECTED_SPACE=$(autorandr --current)
 SPACE_LAPTOP="laptop"
 SPACE_OFFICE="office"
+SPACE_OFFICE2="office2"
 SPACE_HOME="home"
 
 INTERNAL_MONITOR="eDP"
@@ -29,6 +30,16 @@ elif [ "$CONNECTED_SPACE" = "$SPACE_OFFICE" ]; then
 
     bspc config -m "$INTERNAL_MONITOR" top_padding 0
     bspc config -m "$EXTERNAL_MONITOR_TWO" top_padding 24
+
+elif [ "$CONNECTED_SPACE" = "$SPACE_OFFICE2" ]; then
+    bspc monitor "$EXTERNAL_MONITOR_ONE" -d 1 2 3 4 5
+    bspc monitor "$INTERNAL_MONITOR" -d 6 7 8 9 0
+    bspc monitor "$EXTERNAL_MONITOR_TWO" --remove
+
+    bspc config -m "$INTERNAL_MONITOR" top_padding 24
+    bspc config -m "$EXTERNAL_MONITOR_ONE" top_padding 0
+
+    # bspc monitor "$EXTERNAL_MONITOR_ONE" -g 3440x1440+0+0
 
 else
     bspc monitor "$INTERNAL_MONITOR" -d 1 2 3 4 5 6 7 8 9 0
@@ -59,6 +70,16 @@ elif [ "$CONNECTED_SPACE" = "$SPACE_OFFICE" ]; then
         monitor_add
     fi
     bspc wm -O "$INTERNAL_MONITOR" "$EXTERNAL_MONITOR_TWO"
+
+    # https://arcolinuxforum.com/viewtopic.php?t=1686
+    bspc config -m "$INTERNAL_MONITOR" top_padding 0
+    bspc config -m "$EXTERNAL_MONITOR_TWO" top_padding 24
+
+elif [ "$CONNECTED_SPACE" = "$SPACE_OFFICE2" ]; then
+    if [[ $(bspc query -D -m "${EXTERNAL_MONITOR_ONE}" | wc -l) -ne 5 ]]; then
+        monitor_add
+    fi
+    bspc wm -O "$EXTERNAL_MONITOR_ONE" "$INTERNAL_MONITOR"
 
     # https://arcolinuxforum.com/viewtopic.php?t=1686
     bspc config -m "$INTERNAL_MONITOR" top_padding 0
