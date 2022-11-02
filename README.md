@@ -3,9 +3,9 @@
 Dotfiles/Config files that work on my machine.
 
 
-## Easy compare/sync files
+## Easy sync files
 ```bash
-./compare.sh
+./sync.sh
 ```
 
 
