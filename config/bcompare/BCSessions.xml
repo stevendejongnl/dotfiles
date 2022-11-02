@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Produced by Beyond Compare 4 from Scooter Software -->
+<BCSessions Version="1" MinVersion="1">
+	<TSessionFolder>
+		<Items>
+			<TDirCompareSession>
+				<Rules>
+					<UseCaseSensitiveComparison Value="True"/>
+					<UseContentComparison Value="True"/>
+					<UseSizeComparison Value="False"/>
+					<UseTimestampComparison Value="False"/>
+				</Rules>
+			</TDirCompareSession>
+		</Items>
+	</TSessionFolder>
+</BCSessions>
