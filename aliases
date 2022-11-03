@@ -4,6 +4,13 @@
 alias clear_ram="sudo sh -c 'free -h; echo 3 > /proc/sys/vm/drop_caches; swapoff -a; swapon -a; free -h'"
 
 
+function bluecon {
+    if [[ $1 == "headphone" ]]; then
+        bluetoothctl connect 70:26:05:88:2E:71
+    fi
+}
+
+
 # CloudSuite
 function cloudsuite_cli {
    CSCONFIG="$HOME/workspace/trydent/docker-compose.yml"
