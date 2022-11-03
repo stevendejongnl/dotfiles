@@ -12,13 +12,9 @@ super + shift + r
 super + Return
     kitty
 
-# open programs
-super + alt + @space
-    rofi -monitor -1 -show window
-
 # program launcher
 super + @space
-    rofi -monitor -1 -show drun
+    $HOME/.config/rofi/launchers/type-1/launcher.sh 
 
 # quit/restart bspwm
 super + alt + {q,r}
