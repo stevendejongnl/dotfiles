@@ -11,7 +11,8 @@ pgrep -x ntfd > /dev/null || ntfd &
 pgrep -x lxpolkit > /dev/null || lxpolkit &
 
 # activate screen locker
-xset s 300 20
+# 300 = 5min > dim screen
+xset s 300
 xss-lock -n /usr/lib/xsecurelock/dimmer -l -- env XSECURELOCK_NO_COMPOSITE=1 xsecurelock &
 
 # https://www.reddit.com/r/bspwm/comments/kf7077/no_cursor_on_startup_appears_when_opening_a/
