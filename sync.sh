@@ -24,3 +24,5 @@ compare "Compare .zshrc file?" "$HOME/.zshrc" "$REPODIR/zshrc"
 compare "Compare .aliases file?" "$HOME/.aliases" "$REPODIR/aliases"
 compare "Compare .vimrc file?" "$HOME/.vimrc" "$REPODIR/vimrc"
 compare "Compare .zprofile file?" "$HOME/.zprofile" "$REPODIR/zprofile"
+compare "Compare /etc/fstab file?" "/etc/fstab" "$REPODIR/fstab"
+
