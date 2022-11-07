@@ -8,6 +8,10 @@ function bluecon {
     if [[ $1 == "headphone" ]]; then
         bluetoothctl connect 70:26:05:88:2E:71
     fi
+
+    if [[ $1 == "airpods" ]]; then
+        bluetoothctl connect 60:93:16:3C:D3:B9
+    fi
 }
 
 
