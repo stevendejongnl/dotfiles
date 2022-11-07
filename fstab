@@ -3,5 +3,4 @@
 
 # Use tmpfs for some directories
 # https://fishilico.github.io/generic-config/sysadmin/tmpfs.html
-tmpfs			/tmp		tmpfs		nodev,nosuid,noexec											0 0
-
+tmpfs   /tmp    tmpfs   nodev,nosuid,noexec 0 0
