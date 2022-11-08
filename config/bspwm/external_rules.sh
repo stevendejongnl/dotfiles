@@ -9,7 +9,7 @@ main () {
     case "$class" in
         google-chat-linux|whatsapp-nativefier-d40211|TelegramDesktop)
             eval "$consequences"
-            [ "$state" ] || echo "desktop=^1 center=on follow=on"
+            [ "$state" ] || echo "follow=on"
             ;;
         Pavucontrol)
             eval "$consequences"
@@ -21,7 +21,7 @@ main () {
             ;;
         Thunar)
             eval "$consequences"
-            [ "$state" ] || echo "desktop=^2 follow=on"
+            [ "$state" ] || echo "follow=on"
             ;;
         Spotify)
             eval "$consequences"

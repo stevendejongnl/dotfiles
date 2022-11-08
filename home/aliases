@@ -2,6 +2,7 @@
 
 # Global aliases
 alias clear_ram="sudo sh -c 'free -h; echo 3 > /proc/sys/vm/drop_caches; swapoff -a; swapon -a; free -h'"
+alias lg="lazygit"
 
 
 function bluecon {
@@ -15,7 +16,6 @@ function bluecon {
 }
 
 
-# CloudSuite
 function cloudsuite_cli {
    CSCONFIG="$HOME/workspace/trydent/docker-compose.yml"
    CSCONFIG_OVERRIDE="$HOME/workspace/trydent/docker-compose.override.yml"
