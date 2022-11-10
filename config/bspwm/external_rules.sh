@@ -9,7 +9,7 @@ main () {
     case "$class" in
         google-chat-linux|whatsapp-nativefier-d40211|TelegramDesktop)
             eval "$consequences"
-            [ "$state" ] || echo "follow=on"
+            [ "$state" ] || echo "desktop=^1 follow=on"
             ;;
         Pavucontrol)
             eval "$consequences"
