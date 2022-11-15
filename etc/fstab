@@ -4,3 +4,5 @@
 # Use tmpfs for some directories
 # https://fishilico.github.io/generic-config/sysadmin/tmpfs.html
 tmpfs   /tmp    tmpfs   nodev,nosuid,noexec 0 0
+
+//192.168.1.95/fileshare /shared_drives cifs credentials=/etc/samba/credentials,_netdev,x-systemd.automount,uid=1000,user 0 0
