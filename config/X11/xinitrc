@@ -10,6 +10,10 @@ pgrep -x picom > /dev/null || picom &
 pgrep -x ntfd > /dev/null || ntfd &
 pgrep -x lxpolkit > /dev/null || lxpolkit &
 
+keychain $HOME/.ssh/id_rsa
+[ -f $HOME/.keychain/$HOSTNAME-sh ] && . $HOME/.keychain/$HOSTNAME-sh 2>/dev/null
+[ -f $HOME/.keychain/$HOSTNAME-sh-gpg ] && . $HOME/.keychain/$HOSTNAME-sh-gpg 2>/dev/null
+
 # activate screen locker
 # 300 = 5min > dim screen
 xset s 300
