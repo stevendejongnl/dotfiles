@@ -3,6 +3,7 @@
 # Global aliases
 alias clear_ram="sudo sh -c 'free -h; echo 3 > /proc/sys/vm/drop_caches; swapoff -a; swapon -a; free -h'"
 alias lg="lazygit"
+alias docker-compose="docker compose"
 
 
 function bluecon {
