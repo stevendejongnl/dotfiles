@@ -7,121 +7,45 @@ SPACE_LAPTOP="laptop"
 SPACE_OFFICE="office"
 SPACE_OFFICE2="office2"
 SPACE_HOME="home"
+SPACE_DEFAULT="default"
+SPACE_DEFAULT_DUAL_MONITOR="default-dual-monitor"
 
-INTERNAL_MONITOR="eDP"
-EXTERNAL_MONITOR_ONE="HDMI-A-0"
-EXTERNAL_MONITOR_TWO="DisplayPort-0"
+if [ "$CONNECTED_SPACE" = "$SPACE_HOME" ] || [ "$CONNECTED_SPACE" = "$SPACE_OFFICE" ] || [ "$CONNECTED_SPACE" = "$SPACE_OFFICE2" ]; then
+    INTERNAL_MONITOR="eDP"
+    EXTERNAL_MONITOR_ONE="HDMI-A-0"
+    EXTERNAL_MONITOR_TWO="DisplayPort-0"
 
-# on first load setup default workspaces
-# if [[ "$1" = 0 ]]; then
-if [ "$CONNECTED_SPACE" = "$SPACE_HOME" ]; then
-    bspc monitor "$INTERNAL_MONITOR" -d 1 2 3
-    bspc monitor "$EXTERNAL_MONITOR_ONE" -d 4 5 6 7
-    bspc monitor "$EXTERNAL_MONITOR_TWO" -d 8 9 0
+    if [ "$CONNECTED_SPACE" = "$SPACE_HOME" ]; then
+        bspc monitor "$INTERNAL_MONITOR" -d 1 2 3
+        bspc monitor "$EXTERNAL_MONITOR_ONE" -d 4 5 6 7
+        bspc monitor "$EXTERNAL_MONITOR_TWO" -d 8 9 0
 
-    bspc config -m "$INTERNAL_MONITOR" top_padding 0
-    bspc config -m "$EXTERNAL_MONITOR_ONE" top_padding 24
-    bspc config -m "$EXTERNAL_MONITOR_TWO" top_padding 0
+    elif [ "$CONNECTED_SPACE" = "$SPACE_OFFICE" ]; then
+        bspc monitor "$INTERNAL_MONITOR" -d 1 2 3 4 5
+        bspc monitor "$EXTERNAL_MONITOR_ONE" --remove
+        bspc monitor "$EXTERNAL_MONITOR_TWO" -d 6 7 8 9 0
 
-elif [ "$CONNECTED_SPACE" = "$SPACE_OFFICE" ]; then
-    bspc monitor "$INTERNAL_MONITOR" -d 1 2 3 4 5
-    bspc monitor "$EXTERNAL_MONITOR_ONE" --remove
-    bspc monitor "$EXTERNAL_MONITOR_TWO" -d 6 7 8 9 0
-
-    bspc config -m "$INTERNAL_MONITOR" top_padding 0
-    bspc config -m "$EXTERNAL_MONITOR_TWO" top_padding 24
-
-elif [ "$CONNECTED_SPACE" = "$SPACE_OFFICE2" ]; then
-    bspc monitor "$EXTERNAL_MONITOR_ONE" -d 1 2 3 4 5
-    bspc monitor "$INTERNAL_MONITOR" -d 6 7 8 9 0
-    bspc monitor "$EXTERNAL_MONITOR_TWO" --remove
-
-    bspc config -m "$INTERNAL_MONITOR" top_padding 24
-    bspc config -m "$EXTERNAL_MONITOR_ONE" top_padding 0
-
-    # bspc monitor "$EXTERNAL_MONITOR_ONE" -g 3440x1440+0+0
-
-else
-    bspc monitor "$INTERNAL_MONITOR" -d 1 2 3 4 5 6 7 8 9 0
-    bspc monitor "$EXTERNAL_MONITOR_ONE" --remove
-    bspc monitor "$EXTERNAL_MONITOR_TWO" --remove
-
-    bspc config -m "$INTERNAL_MONITOR" top_padding 24
-
-fi
-# fi
-
-if [ "$CONNECTED_SPACE" = "$SPACE_HOME" ]; then
-    if [[ $(bspc query -D -m "${EXTERNAL_MONITOR_ONE}" | wc -l) -ne 5 ]]; then
-        monitor_add
+    elif [ "$CONNECTED_SPACE" = "$SPACE_OFFICE2" ]; then
+        bspc monitor "$EXTERNAL_MONITOR_ONE" -d 1 2 3 4 5
+        bspc monitor "$INTERNAL_MONITOR" -d 6 7 8 9 0
+        bspc monitor "$EXTERNAL_MONITOR_TWO" --remove
     fi
-    if [[ $(bspc query -D -m "${EXTERNAL_MONITOR_TWO}" | wc -l) -ne 5 ]]; then
-        monitor_add
-    fi
-    bspc wm -O "$INTERNAL_MONITOR" "$EXTERNAL_MONITOR_ONE" "$EXTERNAL_MONITOR_TWO"
-
-    # https://arcolinuxforum.com/viewtopic.php?t=1686
-    bspc config -m "$INTERNAL_MONITOR" top_padding 0
-    bspc config -m "$EXTERNAL_MONITOR_ONE" top_padding 24
-    bspc config -m "$EXTERNAL_MONITOR_TWO" top_padding 0
-
-elif [ "$CONNECTED_SPACE" = "$SPACE_OFFICE" ]; then
-    if [[ $(bspc query -D -m "${EXTERNAL_MONITOR_TWO}" | wc -l) -ne 5 ]]; then
-        monitor_add
-    fi
-    bspc wm -O "$INTERNAL_MONITOR" "$EXTERNAL_MONITOR_TWO"
-
-    # https://arcolinuxforum.com/viewtopic.php?t=1686
-    bspc config -m "$INTERNAL_MONITOR" top_padding 0
-    bspc config -m "$EXTERNAL_MONITOR_TWO" top_padding 24
-
-elif [ "$CONNECTED_SPACE" = "$SPACE_OFFICE2" ]; then
-    if [[ $(bspc query -D -m "${EXTERNAL_MONITOR_ONE}" | wc -l) -ne 5 ]]; then
-        monitor_add
-    fi
-    bspc wm -O "$EXTERNAL_MONITOR_ONE" "$INTERNAL_MONITOR"
-
-    # https://arcolinuxforum.com/viewtopic.php?t=1686
-    bspc config -m "$INTERNAL_MONITOR" top_padding 0
-    bspc config -m "$EXTERNAL_MONITOR_TWO" top_padding 24
-
-else
-    if [[ $(bspc query -D -m "${INTERNAL_MONITOR}" | wc -l) -ne 10 ]]; then
-        monitor_remove
-    fi
-    bspc config -m "$INTERNAL_MONITOR" top_padding 24
-
 fi
 
-monitor_add() {
-    # Move first 5 desktops to external monitor
-    for desktop in $(bspc query -D --names -m "$INTERNAL_MONITOR" | sed 5q); do
-        bspc desktop "$desktop" --to-monitor "$EXTERNAL_MONITOR_ONE"
-    done
 
-    # Remove default desktop created by bspwm
-    bspc desktop Desktop --remove
+if [ "$CONNECTED_SPACE" = "$SPACE_DEFAULT" ] || [ "$CONNECTED_SPACE" = "$SPACE_DEFAULT_DUAL_MONITOR" ]; then
+    AOC_PRIMARY="DisplayPort-2"
+    AOC_SECONDARY="DisplayPort-1"
+    LG="HDMI-A-0"
 
-    # reorder monitors
-    bspc wm -O "$INTERNAL_MONITOR" "$EXTERNAL_MONITOR_ONE" "$EXTERNAL_MONITOR_TWO" 
-}
+    if [ "$CONNECTED_SPACE" = "$SPACE_DEFAULT" ]; then
+        bspc monitor "$LG" -d 1 2 3
+        bspc monitor "$AOC_PRIMARY" -d 4 5 6 7
+        bspc monitor "$AOC_SECONDARY" -d 8 9 0
 
-monitor_remove() {
-    # Add default temp desktop because a minimum of one desktop is required per monitor
-    bspc monitor "$EXTERNAL_MONITOR_ONE" -a Desktop
-    bspc monitor "$EXTERNAL_MONITOR_TWO" -a Desktop2
-
-    # Move all desktops except the last default desktop to internal monitor
-    for desktop in $(bspc query -D -m "$EXTERNAL_MONITOR_ONE");	do
-        bspc desktop "$desktop" --to-monitor "$INTERNAL_MONITOR"
-    done
-    for desktop in $(bspc query -D -m "$EXTERNAL_MONITOR_TWO");	do
-        bspc desktop "$desktop" --to-monitor "$INTERNAL_MONITOR"
-    done
-
-    # delete default desktops
-    bspc desktop Desktop --remove
-
-    # reorder desktops
-    bspc monitor "$INTERNAL_MONITOR" -o 1 2 3 4 5 6 7 8 9 0
-}
+    elif [ "$CONNECTED_SPACE" = "$SPACE_DEFAULT_DUAL_MONITOR" ]; then
+        bspc monitor "$LG" --remove
+        bspc monitor "$AOC_PRIMARY" -d 1 2 3 4 5
+        bspc monitor "$AOC_SECONDARY" -d 6 7 8 9 0
+    fi
+fi

@@ -1,6 +1,7 @@
 #! /bin/sh
 
-dex --autostart
+#dex --autostart
+systemctl --user start autostart.target
 
 sleep 3
 WALLPAPERS=$HOME/Pictures/wallpapers
