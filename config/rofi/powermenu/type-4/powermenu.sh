@@ -91,7 +91,24 @@ case ${chosen} in
         ;;
     $lock)
 		if [[ -x '/usr/bin/xsecurelock' ]]; then
-			xsecurelock
+		    env XSECURELOCK_COMPOSITE_OBSCURER=0 \
+			XSECURELOCK_SAVER=$HOME/screensaver/xsecurelock \
+            `# Disable Randr 1.5 support to make screensaver spans accross the whole monitor` \
+            XSECURELOCK_NO_XRANDR15=1 \
+            `# Delay mapping saver window by 500ms to give some time to saver to start` \
+            XSECURELOCK_SAVER_DELAY_MS=500 \
+            `# Do not kill screensaver when DPMS is enabled` \
+            XSECURELOCK_SAVER_STOP_ON_BLANK=0 \
+            `# Do not mess with DPMS settings` \
+            XSECURELOCK_BLANK_TIMEOUT=-1 \
+            `# Image and text for saver` \
+            XSECURELOCK_SAVER_IMAGE=$HOME/Pictures/wallpapers/lucas-segers-6mNKUrwMwFk-unsplash-1920x1080.png \
+            `#XSECURELOCK_SAVER_WEATHER=$XDG_RUNTIME_DIR/i3/weather.txt` \
+            `# Font for authentication window` \
+            XSECURELOCK_FONT="Iosevka" \
+            `# Timeout for authentication window` \
+            XSECURELOCK_AUTH_TIMEOUT=10 \
+            xsecurelock
 		elif [[ -x '/usr/bin/betterlockscreen' ]]; then
 			betterlockscreen -l
 		elif [[ -x '/usr/bin/i3lock' ]]; then
