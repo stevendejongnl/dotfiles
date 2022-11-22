@@ -1,0 +1,5 @@
+[Unit]
+Description=JetBrains Toolbox
+
+[Service]
+ExecStart=/home/stevendejong/.local/share/JetBrains/Toolbox/bin/jetbrains-toolbox --minimize
