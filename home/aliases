@@ -21,6 +21,7 @@ function bluecon {
 function cloudsuite_cli {
    CSCONFIG="$HOME/workspace/trydent/docker-compose.yml"
    CSCONFIG_OVERRIDE="$HOME/workspace/trydent/docker-compose.override.yml"
+   CSTESTCONFIG="$HOME/workspace/trydent/docker-compose.tests.yml"
    CSACONFIG="$HOME/workspace/cloudsuite-app/docker-compose.yml"
 
    POSITIONAL_ARGS=()
@@ -31,6 +32,8 @@ function cloudsuite_cli {
       -l|--log [-c|--container]
       -r|--redis [-c|--command]
       -m|--migrate
+      -tr|--trydent
+      -t|--test
       -a|--app
       -h|--help
       "
@@ -74,6 +77,14 @@ function cloudsuite_cli {
             docker-compose -f $CSACONFIG down && xhost +local:docker; docker-compose -f $CSACONFIG up -d
             return
             ;;
+         -tr|trydent)
+	    docker-compose -f $CSCONFIG
+	    return
+	    ;;
+	 -t|--test)
+	    docker-compose -f $CSTESTCONFIG
+	    return
+	    ;;
          -h|--help)
             help
             return
