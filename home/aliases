@@ -4,7 +4,8 @@
 alias clear_ram="sudo sh -c 'free -h; echo 3 > /proc/sys/vm/drop_caches; swapoff -a; swapon -a; free -h'"
 alias lg="lazygit"
 alias docker-compose="docker compose"
-alias yay-rebuild="yay -S --rebuild --answerclean A --answerdiff N $(checkrebuild | cut -d' ' -f2)"
+alias pacman-cleanup="sudo pacman -Rsn \$(pacman -Qdtq)"
+alias yay-rebuild="yay -S --rebuild --answerclean A --answerdiff N \$(checkrebuild | cut -d' ' -f2)"
 
 
 function bluecon {
@@ -78,11 +79,11 @@ function cloudsuite_cli {
             return
             ;;
          -tr|trydent)
-	    docker-compose -f $CSCONFIG
+	    docker-compose -f $CSCONFIG ${@:2}
 	    return
 	    ;;
 	 -t|--test)
-	    docker-compose -f $CSTESTCONFIG
+	    docker-compose -f $CSTESTCONFIG ${@:2}
 	    return
 	    ;;
          -h|--help)
