@@ -15,7 +15,7 @@ crtc 0
 mode 1920x1080
 pos 1920x0
 primary
-rate 120.00
+rate 144.00
 x-prop-max_bpc 8
 x-prop-non_desktop 0
 x-prop-scaling_mode None
@@ -27,7 +27,7 @@ output DisplayPort-0
 crtc 2
 mode 1920x1080
 pos 3840x0
-rate 120.00
+rate 144.00
 x-prop-max_bpc 8
 x-prop-non_desktop 0
 x-prop-scaling_mode None

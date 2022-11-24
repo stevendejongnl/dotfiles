@@ -105,7 +105,7 @@ case ${chosen} in
             XSECURELOCK_SAVER_IMAGE=$HOME/Pictures/wallpapers/lucas-segers-6mNKUrwMwFk-unsplash-1920x1080.png \
             `#XSECURELOCK_SAVER_WEATHER=$XDG_RUNTIME_DIR/i3/weather.txt` \
             `# Font for authentication window` \
-            XSECURELOCK_FONT="Iosevka" \
+            #XSECURELOCK_FONT="Iosevka" \
             `# Timeout for authentication window` \
             XSECURELOCK_AUTH_TIMEOUT=10 \
             xsecurelock
