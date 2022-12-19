@@ -4,3 +4,6 @@
       - base-devel
     state: present
   become: yes
+
+- name: Install AUR deploy_helper:
+  script: "{{ ansible_env.PWD }}/roles/base/files/aur-helper.sh"
