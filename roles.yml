@@ -3,4 +3,6 @@
   roles:
     - base
     - autorandr
+    - bspwm
+    - sxhkd
     - bcompare
