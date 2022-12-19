@@ -3,7 +3,6 @@
   roles:
     - base
     - git
-    - yay
     - autorandr
     - bcompare
 

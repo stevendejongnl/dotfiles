@@ -1,9 +1,9 @@
 - name: Install autorandr
+  become: yes
   package:
     name:
       - autorandr
     state: present
-  become: yes
 
 - name: Copy autorandr config directories
   copy:

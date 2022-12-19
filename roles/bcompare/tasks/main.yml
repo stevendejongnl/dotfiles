@@ -1,9 +1,8 @@
-- name: Install Beyond Compare
-  package:
+- name: Install package_name_1 and package_name_2 using yay
+  kewlfft.aur.aur:
+    use: yay
     name:
       - bcompare
-    state: present
-  become: yes
 
 - name: Copy Beyond Compare config files
   copy:

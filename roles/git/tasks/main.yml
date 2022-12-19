@@ -1,8 +1,8 @@
 - name: Install git and dependencies
+  become: yes
   package:
     name:
       - git
       - lazygit
       - glab
     state: present
-  become: yes
