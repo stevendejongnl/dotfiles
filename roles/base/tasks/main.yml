@@ -1,0 +1,6 @@
+- name: Install base dependencies
+  package:
+    name:
+      - base-devel
+    state: present
+  become: yes
