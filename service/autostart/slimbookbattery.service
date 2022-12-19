@@ -1,5 +1,0 @@
-[Unit]
-Description=Slimbook Battery
-
-[Service]
-ExecStart=python3 /usr/share/slimbookbattery/src/slimbookbatteryindicator.py

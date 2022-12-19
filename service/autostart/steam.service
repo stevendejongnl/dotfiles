@@ -1,5 +1,0 @@
-[Unit]
-Description=Steam
-
-[Service]
-ExecStart=/usr/bin/steam-runtime %U

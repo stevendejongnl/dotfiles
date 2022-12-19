@@ -1,5 +1,0 @@
-[Unit]
-Description=Clipman
-
-[Service]
-ExecStart=xfce4-clipman
