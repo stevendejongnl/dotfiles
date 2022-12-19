@@ -8,4 +8,4 @@ else
     git pull https://aur.archlinux.org/yay-bin.git
 fi
 
-makepkg -si -y
+makepkg -sifd
