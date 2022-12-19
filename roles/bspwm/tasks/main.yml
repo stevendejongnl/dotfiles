@@ -1,0 +1,11 @@
+- name: Install bspwm dependencies
+  become: yes
+  package:
+    name:
+      - bspwm
+    state: present
+
+- name: Copy bspwm config files
+  copy:
+    src: "{{ ansible_env.PWD }}/roles/bspwm/files"
+    dest: "{{ ansible_env.HOME }}/.config/bspwm"
