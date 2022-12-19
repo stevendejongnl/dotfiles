@@ -6,4 +6,3 @@
       - glab
     state: present
   become: yes
-
