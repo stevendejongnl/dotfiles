@@ -3,6 +3,7 @@
   roles:
     - base
     - autorandr
+    - X11
     - bspwm
     - sxhkd
     - polybar

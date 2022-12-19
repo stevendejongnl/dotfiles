@@ -1,0 +1,4 @@
+- name: Copy X11 config files
+  copy:
+    src: "{{ ansible_env.PWD }}/roles/X11/files"
+    dest: "{{ ansible_env.HOME }}/.config/X11"
