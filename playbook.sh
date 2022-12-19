@@ -1,4 +1,4 @@
 #! /bin/bash
 
-ansible-playbook --ask-become-pass -i hosts roles.yml
+ansible-playbook --ask-become-pass roles.yml
 
