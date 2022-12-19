@@ -1,9 +1,7 @@
 - name: Install Beyond Compare
-  package:
+  aur:
     name:
       - bcompare
-    state: present
-  become: yes
 
 - name: Copy Beyond Compare config files
   copy:
