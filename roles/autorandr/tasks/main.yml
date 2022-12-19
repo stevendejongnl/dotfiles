@@ -1,0 +1,11 @@
+- name: Install autorandr
+  package:
+    name:
+      - autorandr
+    state: present
+  become: yes
+
+- name: Copy autorandr config directories
+  copy:
+    src: "{{ ansible_env.PWD }}/roles/autorandr/files"
+    dest: "{{ asnsible_env.HOME }}/.config/autorandr"
