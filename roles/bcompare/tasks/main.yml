@@ -1,5 +1,5 @@
 - name: Install Beyond Compare
-  package:
+  yay:
     name:
       - bcompare
     state: present
