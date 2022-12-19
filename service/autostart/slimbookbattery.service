@@ -2,4 +2,4 @@
 Description=Slimbook Battery
 
 [Service]
-ExecStart=slimbookbattery
+ExecStart=python3 /usr/share/slimbookbattery/src/slimbookbatteryindicator.py
