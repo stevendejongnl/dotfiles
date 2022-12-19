@@ -3,7 +3,9 @@
     - name: Install base dependencies
       roles:
         - base
-  roles:
-    - git
-    - autorandr
-    - bcompare
+  post_tasks:
+    - name: Install the rest of the dependencies
+      roles:
+        - git
+        - autorandr
+        - bcompare
