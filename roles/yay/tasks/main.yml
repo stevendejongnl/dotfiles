@@ -1,0 +1,3 @@
+- name: Install yay (Yet another Yogurt)
+  script: "{{ ansible_env.PWD }}/roles/yay/files/install.sh"
+  become: yes
