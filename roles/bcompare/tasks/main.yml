@@ -8,4 +8,4 @@
 - name: Copy Beyond Compare config files
   copy:
     src: "{{ ansible_env.PWD }}/roles/bcompare/files"
-    dest: "{{ asnsible_env.HOME }}/.config/bcompare"
+    dest: "{{ ansible_env.HOME }}/.config/bcompare"
