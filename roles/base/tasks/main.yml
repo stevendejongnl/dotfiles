@@ -3,6 +3,9 @@
   package:
     name:
       - base-devel
+      - git
+      - lazygit
+      - glab
     state: present
 
 - name: Check if yay exists

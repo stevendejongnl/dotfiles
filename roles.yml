@@ -1,7 +1,6 @@
-- name: Install dependencies
+- name: Install a base environment
   hosts: localhost
   roles:
     - base
-    - git
     - autorandr
     - bcompare
