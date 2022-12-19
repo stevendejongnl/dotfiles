@@ -1,0 +1,11 @@
+- name: Install Beyond Compare
+  package:
+    name:
+      - bcompare
+    state: present
+  become: yes
+
+- name: Copy Beyond Compare config files
+  copy:
+    src: "{{ ansible_env.PWD }}/roles/bcompare/files"
+    dest: "{{ asnsible_env.HOME }}/.config/bcompare"
