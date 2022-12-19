@@ -1,5 +1,5 @@
-# - name: Install Beyond Compare
-#   aur: name=bcompare user={{ user.name }}
+- name: Install Beyond Compare
+  aur: name=bcompare user={{ user.name }}
 
 - name: Copy Beyond Compare config files
   copy:
