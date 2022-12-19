@@ -5,6 +5,15 @@
       - base-devel
     state: present
 
+- name: Check if yay exists
+  stat:
+    path: /usr/bin/yay
+  register: check_yay
+
+- name: Install yay (Yet another Yogurt)
+  script: "{{ ansible_env.PWD }}/roles/base/files/install_yay.sh"
+  when: not check_yay.stat.exists
+
 - name: Create the `aur_builder` user
   become: yes
   user:
