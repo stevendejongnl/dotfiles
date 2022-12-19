@@ -1,7 +1,10 @@
 - name: Setup local environment
   hosts: localhost
+  - pre_tasks:
+  - name: Install base dependencies
+    roles:
+      - base
   roles:
-    - base
     - git
     - autorandr
     - bcompare
