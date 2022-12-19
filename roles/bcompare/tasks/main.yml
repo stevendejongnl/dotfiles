@@ -1,5 +1,5 @@
 - name: Install Beyond Compare
-  kewlfft.aur.aur:
+  aur:
     use: yay
     name:
       - bcompare
