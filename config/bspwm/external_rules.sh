@@ -11,7 +11,7 @@ main () {
             eval "$consequences"
             [ "$state" ] || echo "desktop=^1 follow=on"
             ;;
-        Pavucontrol)
+        Pavucontrol|jetbrains-toolbox)
             eval "$consequences"
             [ "$state" ] || echo "state=floating follow=on center=on"
             ;;
