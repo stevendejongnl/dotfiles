@@ -1,11 +1,7 @@
-- hosts: localhost
-  pre_tasks:
-    - name: Install base dependencies
-      roles:
-        - base
-  # post_tasks:
-  #   - name: Install the rest of the dependencies
-  #     roles:
+- name: Install dependencies
+  hosts: localhost
+  roles:
+    - base
   #       - git
   #       - autorandr
   #       - bcompare
