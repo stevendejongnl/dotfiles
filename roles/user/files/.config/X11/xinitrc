@@ -1,3 +1,5 @@
+# Load this file with ~/.zprofile
+
 xrdb $HOME/.config/X11/xresources
 
 # This rule is needed when no display manager is used (Removed sddm and use startx instead)

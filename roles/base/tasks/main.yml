@@ -4,6 +4,7 @@
     name:
       - base-devel
       - git
+      - xorg-xinit
       - lazygit
       - glab
     state: present
