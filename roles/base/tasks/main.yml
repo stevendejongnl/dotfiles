@@ -36,7 +36,7 @@
       - noto-fonts-extra
 
       # Nice to haves
-      - direnvls
+      - direnvs
       - lazygit
       - glab
     state: present
