@@ -2,12 +2,8 @@
 
 - name: Have boot messages stay on tty1
   become: yes
-  command: echo -e "[Service]\nTTYVTDisallocate=no\n" > /etc/systemd/system/getty@tty1.service.d/noclear.conf
+  script: "{{ ansible_env.PWD }}/roles/tty/files/tty1-boot-message.sh"
 
 - name: Forwarding the journal to /dev/tty12
   become: yes
-  command: echo -e "[Journal]\nForwardToConsole=yesTTYPath=/dev/tty12MaxLevelConsole=info" > /etc/systemd/journald.conf.d/fw-tty12.conf
-
-- name: Restart Systemd Journald Service
-  become: yes
-  command: systemctl restart systemd-journald.service
+  script: "{{ ansible_env.PWD }}/roles/tty/files/forward-journald.sh"
