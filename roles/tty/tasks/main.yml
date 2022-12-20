@@ -2,8 +2,8 @@
 
 - name: Have boot messages stay on tty1
   become: yes
-  script: "{{ ansible_env.PWD }}/roles/tty/files/tty1-boot-message.sh"
+  script: "{{ ansible_env.PWD }}/roles/tty/scripts/tty1-boot-message.sh"
 
 - name: Forwarding the journal to /dev/tty12
   become: yes
-  script: "{{ ansible_env.PWD }}/roles/tty/files/forward-journald.sh"
+  script: "{{ ansible_env.PWD }}/roles/tty/scripts/forward-journald.sh"

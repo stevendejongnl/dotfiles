@@ -41,7 +41,7 @@
   register: check_yay
 
 - name: Install yay (Yet another Yogurt)
-  script: "{{ ansible_env.PWD }}/roles/base/files/install_yay.sh"
+  script: "{{ ansible_env.PWD }}/roles/base/scripts/install_yay.sh"
   when: not check_yay.stat.exists
 
 - name: Create the `aur_builder` user
@@ -67,4 +67,4 @@
 
 - name: Install Oh-my-zsh
   become: yes
-  script:  "{{ ansible_env.PWD }}/roles/base/files/install_oh-my-zsh.sh"
+  script:  "{{ ansible_env.PWD }}/roles/base/scripts/install_oh-my-zsh.sh"
