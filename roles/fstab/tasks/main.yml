@@ -1,0 +1,6 @@
+
+- name: Copy fstab
+  become: yes
+  copy:
+    src: "{{ ansible_env.PWD }}/roles/fstab/files/fstab"
+    dest: "/etc/fstab"
