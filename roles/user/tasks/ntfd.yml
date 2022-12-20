@@ -2,3 +2,4 @@
   copy:
     src: "{{ ansible_env.PWD }}/roles/user/files/.config/ntfd/"
     dest: "{{ ansible_env.HOME }}/.config/ntfd/"
+    backup: yes
