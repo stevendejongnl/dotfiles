@@ -4,7 +4,6 @@
     - base
     - X11
     - bspwm
-    - sxhkd
     - polybar
     - user
-    - bcompare
+    - applications
