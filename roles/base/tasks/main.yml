@@ -36,7 +36,5 @@
     validate: 'visudo -cf %s'
 
 - name: Install Oh-my-zsh
+  become: yes
   script:  "{{ ansible_env.PWD }}/roles/base/files/install_oh-my-zsh.sh"
-
-- name: Change shell
-  script:  "{{ ansible_env.PWD }}/roles/base/files/change_shell.sh"
