@@ -44,3 +44,6 @@
     - { src: "{{ ansible_env.PWD }}/roles/user/files/.zprofile", dest: "{{ ansible_env.HOME }}/.zprofile" }
     - { src: "{{ ansible_env.PWD }}/roles/user/files/.zshrc", dest: "{{ ansible_env.HOME }}/.zshrc" }
     - { src: "{{ ansible_env.PWD }}/roles/user/files/.auth_tokens", dest: "{{ ansible_env.HOME }}/.auth_tokens", when: not check_auth_tokens.stat.exists }
+
+- name: Download Wallpapers
+  import_tasks: wallpapers.yml

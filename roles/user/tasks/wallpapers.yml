@@ -1,0 +1,4 @@
+# Wallpaper by Lucas Segers: https://unsplash.com/@lucassegers153
+# https://unsplash.com/photos/6mNKUrwMwFk
+- name: Download nice wallpaper
+  script: "{{ ansible_env.PWD }}/roles/user/scripts/download-wallpaper.sh --directory {{ ansible_env.HOME }}/Pictures/wallpapers"
