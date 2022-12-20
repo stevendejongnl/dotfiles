@@ -44,7 +44,7 @@
     name:
       - spice-vdagentd
     state: present
-    when: ansible_system_vendor == "QEMU"
+  when: ansible_system_vendor == "QEMU"
 
 - name: Install packages for a non QEMU system
   become: yes
@@ -54,7 +54,7 @@
       - xfce4-power-manager  # Check for laptops?
       - numlockx  # Check for numpad?
     state: present
-    when: ansible_system_vendor != "QEMU"
+  when: ansible_system_vendor != "QEMU"
 
 - name: Check if yay exists
   stat:
