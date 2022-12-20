@@ -2,7 +2,7 @@
   hosts: localhost
   roles:
     - base
-    - autorandr
+    # - autorandr
     - X11
     - bspwm
     - sxhkd

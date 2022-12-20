@@ -1,22 +1,6 @@
-# - name: Copy user aliases
-#   copy:
-#     src: "{{ ansible_env.PWD }}/roles/user/files/.aliases"
-#     dest: "{{ ansible_env.HOME }}/.aliases"
-
-# - name: Copy user vimrc
-#   copy:
-#     src: "{{ ansible_env.PWD }}/roles/user/files/.vimrc"
-#     dest: "{{ ansible_env.HOME }}/.vimrc"
-
-# - name: Copy user zprofile
-#   copy:
-#     src: "{{ ansible_env.PWD }}/roles/user/files/.zprofile"
-#     dest: "{{ ansible_env.HOME }}/.zprofile"
-
-# - name: Copy user zshrc
-#   copy:
-#     src: "{{ ansible_env.PWD }}/roles/user/files/.zshrc"
-#     dest: "{{ ansible_env.HOME }}/.zshrc"
+- name: Copy config files
+  import_role:
+    tasks_from: autorandr
 
 - name: Copy User dotfiles
   copy: src={{ item.src }} dest={{ item.dest }}
