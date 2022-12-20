@@ -5,7 +5,16 @@
       - polybar
     state: present
 
+- name: Get current user
+  command: whoami
+  changed_when: false
+  become: false
+  register: whoami
+
 - name: Copy polybar config files
+  set_fact:
+    login_user: "{{ whoami.stdout }}"
+  become_user: "{{ login_user }}"
   copy:
     src: "{{ ansible_env.PWD }}/roles/user/files/.config/polybar/"
     dest: "{{ ansible_env.HOME }}/.config/polybar/"
