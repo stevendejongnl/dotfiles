@@ -1,0 +1,29 @@
+# https://www.pc-freak.net/blog/set-logs-log-physical-console-devtty12-tty12-linux/
+
+- name: Enable TTY8
+  become: yes
+  command: systemctl enable getty@tty8.service
+
+- name: Enable TTY9
+  become: yes
+  command: systemctl enable getty@tty9.service
+
+- name: Enable TTY10
+  become: yes
+  command: systemctl enable getty@tty10.service
+
+- name: Enable TTY11
+  become: yes
+  command: systemctl enable getty@tty11.service
+
+- name: Enable TTY12
+  become: yes
+  command: systemctl enable getty@tty12.service
+
+- name: Show rsyslog on TTY12
+  become: yes
+  command: echo "daemon,mail.*;\nnews.=crit;news.=err;news.=notice;\n*.=debug;*.=info;\n*.=notice;*.=warn   /dev/tty12" >> /etc/rsyslog.conf
+
+- name: Restart rsyslog
+  become: yes
+  command: systemctl restart rsyslog
