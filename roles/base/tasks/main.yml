@@ -38,15 +38,15 @@
       - glab
     state: present
 
-- name: Install packages for a QEMU system
+- name: Install packages for a virtualization system
   become: yes
   package:
     name:
       - spice-vdagent
     state: present
-  when: ansible_system_vendor == "QEMU"
+  when: ansible_virtualization_role == "guest"
 
-- name: Install packages for a non QEMU system
+- name: Install packages for a non virtualization system
   become: yes
   package:
     name:
@@ -54,7 +54,7 @@
       - xfce4-power-manager  # Check for laptops?
       - numlockx  # Check for numpad?
     state: present
-  when: ansible_system_vendor != "QEMU"
+  when: ansible_virtualization_role == "host"
 
 - name: Check if yay exists
   stat:

@@ -1,6 +1,7 @@
 - name: Install a base environment
   hosts: localhost
   roles:
+    - info
     - base
     - tty
     - user

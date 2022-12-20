@@ -1,5 +1,7 @@
 #! /bin/bash
 
+sudo pacman -S ansible
+
 # Create the user custom module directory
 mkdir -p $HOME/.ansible/plugins/modules
 
