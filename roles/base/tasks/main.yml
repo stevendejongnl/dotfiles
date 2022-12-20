@@ -36,10 +36,7 @@
     validate: 'visudo -cf %s'
 
 - name: Install Oh-my-zsh
-  command: sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended --keep-zshrc
-
-- name: Install zplug
-  command: curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
+  script:  "{{ ansible_env.PWD }}/roles/base/files/install_oh-my-zsh.sh"
 
 - name: Change shell
   script:  "{{ ansible_env.PWD }}/roles/base/files/change_shell.sh"
