@@ -1,0 +1,11 @@
+- name: Install picom dependency
+  become: yes
+  package:
+    name:
+      - picom
+    state: present
+
+- name: Copy picom config files
+  copy:
+    src: "{{ ansible_env.PWD }}/roles/user/files/.config/picom"
+    dest: "{{ ansible_env.HOME }}/.config/picom"

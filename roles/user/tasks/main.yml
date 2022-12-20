@@ -4,8 +4,26 @@
 - name: Install bspwm and copy files
   import_tasks: bspwm.yml
 
+- name: Install dunst and copy files
+  import_tasks: dunst.yml
+
+- name: Copy GTK 3.0 files
+  import_tasks: gtk-3.0.yml
+
+- name: Install kitty and copy files
+  import_tasks: kitty.yml
+
+- name: Copy ntfd files
+  import_tasks: ntfd.yml
+
+- name: Install picom and copy files
+  import_tasks: picom.yml
+
 - name: Install polybar and copy files
   import_tasks: polybar.yml
+
+- name: Install rofi and copy files
+  import_tasks: rofi.yml
 
 - name: Install sxhkd and copy files
   import_tasks: sxhkd.yml

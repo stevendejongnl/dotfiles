@@ -1,0 +1,11 @@
+- name: Install rofi dependency
+  become: yes
+  package:
+    name:
+      - rofi
+    state: present
+
+- name: Copy rofi config files
+  copy:
+    src: "{{ ansible_env.PWD }}/roles/user/files/.config/rofi"
+    dest: "{{ ansible_env.HOME }}/.config/rofi"

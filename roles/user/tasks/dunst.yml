@@ -1,0 +1,11 @@
+- name: Install dunst dependency
+  become: yes
+  package:
+    name:
+      - dunst
+    state: present
+
+- name: Copy dunst config files
+  copy:
+    src: "{{ ansible_env.PWD }}/roles/user/files/.config/dunst"
+    dest: "{{ ansible_env.HOME }}/.config/dunst"

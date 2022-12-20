@@ -1,0 +1,11 @@
+- name: Install kitty dependency
+  become: yes
+  package:
+    name:
+      - kitty
+    state: present
+
+- name: Copy kitty config files
+  copy:
+    src: "{{ ansible_env.PWD }}/roles/user/files/.config/kitty"
+    dest: "{{ ansible_env.HOME }}/.config/kitty"
