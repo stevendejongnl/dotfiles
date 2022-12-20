@@ -1,7 +1,8 @@
-- name: Install applications and copy files
-  import_tasks:
-    - autorandr.yml
-    - sxhkd.yml
+- name: Install autorandr and copy files
+  import_tasks: autorandr.yml
+
+- name: Install sxhkd and copy files
+  import_tasks: sxhkd.yml
 
 - name: Copy User dotfiles
   copy: src={{ item.src }} dest={{ item.dest }}
