@@ -1,3 +1,8 @@
+- name: Synchronize, Download fresh databases and upgrade all out-of-date packages
+  pacman:
+    update_cache: true
+    upgrade: true
+
 - name: Install packages for a base system
   become: yes
   package:
@@ -30,7 +35,7 @@
       - noto-fonts-extra
 
       # Nice to haves
-      - direnv
+      - direnvls
       - lazygit
       - glab
     state: present
