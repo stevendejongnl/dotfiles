@@ -36,6 +36,7 @@
       - direnv
       - lazygit
       - glab
+      - feh
     state: present
 
 - name: Install packages for a virtualization system
