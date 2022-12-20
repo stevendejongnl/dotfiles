@@ -7,5 +7,5 @@
 
 - name: Copy sxhkd config file
   copy:
-    src: "{{ ansible_env.PWD }}/roles/user/files/.config/sxhkd"
-    dest: "{{ ansible_env.HOME }}/.config/sxhkd"
+    src: "{{ ansible_env.PWD }}/roles/user/files/.config/sxhkd/"
+    dest: "{{ ansible_env.HOME }}/.config/sxhkd/"

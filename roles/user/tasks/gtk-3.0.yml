@@ -1,4 +1,4 @@
 - name: Copy GTK 3.0 config files
   copy:
-    src: "{{ ansible_env.PWD }}/roles/user/files/.config/gtk-3.0"
-    dest: "{{ ansible_env.HOME }}/.config/gtk-3.0"
+    src: "{{ ansible_env.PWD }}/roles/user/files/.config/gtk-3.0/"
+    dest: "{{ ansible_env.HOME }}/.config/gtk-3.0/"

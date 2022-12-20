@@ -7,5 +7,5 @@
 
 - name: Copy polybar config files
   copy:
-    src: "{{ ansible_env.PWD }}/roles/user/files/.config/polybar"
-    dest: "{{ ansible_env.HOME }}/.config/polybar"
+    src: "{{ ansible_env.PWD }}/roles/user/files/.config/polybar/"
+    dest: "{{ ansible_env.HOME }}/.config/polybar/"

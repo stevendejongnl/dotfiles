@@ -7,5 +7,5 @@
 
 - name: Copy bspwm config files
   copy:
-    src: "{{ ansible_env.PWD }}/roles/user/files/.config/bspwm"
-    dest: "{{ ansible_env.HOME }}/.config/bspwm"
+    src: "{{ ansible_env.PWD }}/roles/user/files/.config/bspwm/"
+    dest: "{{ ansible_env.HOME }}/.config/bspwm/"

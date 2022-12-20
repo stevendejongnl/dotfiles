@@ -1,4 +1,4 @@
 - name: Copy ntfd config files
   copy:
-    src: "{{ ansible_env.PWD }}/roles/user/files/.config/ntfd"
-    dest: "{{ ansible_env.HOME }}/.config/ntfd"
+    src: "{{ ansible_env.PWD }}/roles/user/files/.config/ntfd/"
+    dest: "{{ ansible_env.HOME }}/.config/ntfd/"

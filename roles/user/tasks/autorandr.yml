@@ -7,5 +7,5 @@
 
 - name: Copy autorandr config directories
   copy:
-    src: "{{ ansible_env.PWD }}/roles/user/files/.config/autorandr"
-    dest: "{{ ansible_env.HOME }}/.config/autorandr"
+    src: "{{ ansible_env.PWD }}/roles/user/files/.config/autorandr/"
+    dest: "{{ ansible_env.HOME }}/.config/autorandr/"

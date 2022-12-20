@@ -7,5 +7,5 @@
 
 - name: Copy dunst config files
   copy:
-    src: "{{ ansible_env.PWD }}/roles/user/files/.config/dunst"
-    dest: "{{ ansible_env.HOME }}/.config/dunst"
+    src: "{{ ansible_env.PWD }}/roles/user/files/.config/dunst/"
+    dest: "{{ ansible_env.HOME }}/.config/dunst/"
