@@ -1,17 +1,13 @@
-# https://www.pc-freak.net/blog/set-logs-log-physical-console-devtty12-tty12-linux/
+# https://gist.github.com/lbrame/1678c00213c2bd069c0a59f8733e0ee6#forwarding-the-journal-to-devtty12
 
 - name: Have boot messages stay on tty1
   become: yes
-  command: echo "[Service]\nTTYVTDisallocate=no\n" > /etc/systemd/system/getty@tty1.service.d/noclear.conf
+  command: echo -e "[Service]\nTTYVTDisallocate=no\n" > /etc/systemd/system/getty@tty1.service.d/noclear.conf
 
-- name: Enable TTY12
+- name: Forwarding the journal to /dev/tty12
   become: yes
-  command: systemctl enable getty@tty12.service && systemctl start getty@tty12.service
+  command: echo -e "[Journal]\nForwardToConsole=yesTTYPath=/dev/tty12MaxLevelConsole=info" > /etc/systemd/journald.conf.d/fw-tty12.conf
 
-# - name: Show rsyslog on TTY12
-#   become: yes
-#   command: echo "daemon,mail.*;\nnews.=crit;news.=err;news.=notice;\n*.=debug;*.=info;\n*.=notice;*.=warn   /dev/tty12" >> /etc/rsyslog.conf
-
-# - name: Restart rsyslog
-#   become: yes
-#   command: systemctl restart rsyslog
+- name: Restart Systemd Journald Service
+  become: yes
+  command: systemctl restart systemd-journald.service
