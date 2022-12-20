@@ -42,7 +42,7 @@
   become: yes
   package:
     name:
-      - spice-vdagentd
+      - spice-vdagent
     state: present
   when: ansible_system_vendor == "QEMU"
 
