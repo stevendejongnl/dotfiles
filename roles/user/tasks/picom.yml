@@ -5,8 +5,9 @@
       - picom
     state: present
 
-- name: Copy picom config files
-  copy:
-    src: "{{ ansible_env.PWD }}/roles/user/files/.config/picom/"
-    dest: "{{ ansible_env.HOME }}/.config/picom/"
-    backup: yes
+- name: Set picom backend
+  vars:
+    script: "{{ ansible_env.PWD }}/roles/user/scripts/adjust-picom-config.sh"
+    file: "{{ ansible_env.PWD }}/roles/user/files/.config/picom/picom.conf"
+    picom: "{{ ansible_env.HOME }}/.config/picom"
+  script: "{{ script }} --file {{ file }} --environment {{ ansible_virtualization_role }} --picom {{ picom }}"

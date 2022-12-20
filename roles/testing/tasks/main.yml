@@ -1,0 +1,2 @@
+- name: Echo ansible variables
+  command: 'echo -e "PWD: {{ ansible_env.PWD }}"'
