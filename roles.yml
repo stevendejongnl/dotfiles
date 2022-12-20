@@ -2,8 +2,5 @@
   hosts: localhost
   roles:
     - base
-    - X11
-    - bspwm
-    - polybar
     - user
     - applications
