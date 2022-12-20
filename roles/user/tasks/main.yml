@@ -1,6 +1,12 @@
 - name: Install autorandr and copy files
   import_tasks: autorandr.yml
 
+- name: Install bspwm and copy files
+  import_tasks: bspwm.yml
+
+- name: Install polybar and copy files
+  import_tasks: polybar.yml
+
 - name: Install sxhkd and copy files
   import_tasks: sxhkd.yml
 
