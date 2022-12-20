@@ -4,6 +4,7 @@
     name:
       - base-devel
       - git
+      - xorg
       - xorg-xinit
       - lazygit
       - glab
