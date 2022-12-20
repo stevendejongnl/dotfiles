@@ -5,6 +5,8 @@
       - base-devel
       - vim
       - git
+      - polkit
+      - lxsession-gtk3
       - xorg
       - xorg-xinit
       - zsh
@@ -38,6 +40,12 @@
     line: 'aur_builder ALL=(ALL) NOPASSWD: /usr/bin/pacman'
     create: yes
     validate: 'visudo -cf %s'
+
+- name: Install base yay packages
+  aur:
+    use: yay
+    name:
+      - ntfd-bin
 
 - name: Install Oh-my-zsh
   become: yes
