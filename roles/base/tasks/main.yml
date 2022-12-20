@@ -6,6 +6,7 @@
       - git
       - xorg
       - xorg-xinit
+      - zsh
       - lazygit
       - glab
     state: present
@@ -33,3 +34,12 @@
     line: 'aur_builder ALL=(ALL) NOPASSWD: /usr/bin/pacman'
     create: yes
     validate: 'visudo -cf %s'
+
+- name: Install Oh-my-zsh
+  command: sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended --keep-zshrc
+
+- name: Install zplug
+  command: curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
+
+- name: Change shell
+  script:  "{{ ansible_env.PWD }}/roles/base/files/change_shell.sh"
