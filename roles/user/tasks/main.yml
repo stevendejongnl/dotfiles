@@ -10,6 +10,9 @@
 - name: Install sxhkd and copy files
   import_tasks: sxhkd.yml
 
+- name: Copy X11 files
+  import_tasks: X11.yml
+
 - name: Copy User dotfiles
   copy: src={{ item.src }} dest={{ item.dest }}
   with_items:
