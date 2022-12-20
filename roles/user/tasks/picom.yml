@@ -9,3 +9,4 @@
   copy:
     src: "{{ ansible_env.PWD }}/roles/user/files/.config/picom/"
     dest: "{{ ansible_env.HOME }}/.config/picom/"
+    backup: yes
