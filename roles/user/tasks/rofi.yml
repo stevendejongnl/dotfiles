@@ -9,3 +9,9 @@
   copy:
     src: "{{ ansible_env.PWD }}/roles/user/files/.config/rofi/"
     dest: "{{ ansible_env.HOME }}/.config/rofi/"
+
+- name: Change file permission for rofi executables
+  file: dest={{ item.dest }} mode={{ item.mode }}
+  with_items:
+    - { dest: "{{ ansible_env.HOME }}/.config/rofi/launcher/type-1/launcher.sh", mode: +x }
+    - { dest: "{{ ansible_env.HOME }}/.config/rofi/powermenu/type-4/powermenu.sh", mode: +x }
