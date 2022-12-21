@@ -11,7 +11,7 @@
     dest: "{{ ansible_env.HOME }}/.config/polybar/"
 
 - name: Change file permission for polybar executables
-  file: dest=/{{ item.dest }}
+  file: dest={{ item.dest }}
   with_items:
     - { dest: "{{ ansible_env.HOME }}/.config/polybar/launch.sh", mode: +x }
     - { dest: "{{ ansible_env.HOME }}/.config/polybar/scripts/notification-clear.sh", mode: +x }

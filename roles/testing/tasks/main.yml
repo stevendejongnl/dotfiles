@@ -2,7 +2,7 @@
   command: 'echo -e "PWD: {{ ansible_env.PWD }}"'
 
 - name: Change file permission for multiple files
-  file: dest=/{{ item.dest }}
+  file: dest={{ item.dest }}
   with_items:
     - { dest: "foo/bar.sh", mode: a+x }
 
