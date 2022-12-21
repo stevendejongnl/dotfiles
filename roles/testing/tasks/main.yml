@@ -1,2 +1,21 @@
 - name: Echo ansible variables
   command: 'echo -e "PWD: {{ ansible_env.PWD }}"'
+
+- name: Change file permission for multiple files
+  file: dest=/{{ item.dest }}
+  with_items:
+    - { dest: "foo/bar.sh", mode: a+x }
+
+- name: Change file permission per file
+  file: dest=/foo/bar.sh mode=a+x
+
+- name: Change file permission when copying for multiple files
+  copy: src={{ item.src }} dest={{ item.dest }}
+  with_items:
+    - { src: "foo/bar.sh", dest: "foo/bar.sh", mode: a+x }
+
+- name: Change file permission when copying per file
+  copy:
+    src: "foo/bar.sh"
+    dest: "foo/bar.sh"
+    mode: a+x
