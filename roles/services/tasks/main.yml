@@ -13,6 +13,7 @@
     - { service: 'flameshot' }
     - { service: 'google-chat' }
     - { service: 'jetbrains-toolbox' }
+    - { service: 'kdocker' }
     - { service: 'nm-applet' }
     - { service: 'obsidian' }
     - { service: 'owncloud' }
