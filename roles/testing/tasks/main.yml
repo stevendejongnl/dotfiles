@@ -2,7 +2,7 @@
   command: 'echo -e "PWD: {{ ansible_env.PWD }}"'
 
 - name: Change file permission for multiple files
-  file: dest={{ item.dest }}
+  file: dest={{ item.dest }} mode={{ item.mode }}
   with_items:
     - { dest: "foo/bar.sh", mode: a+x }
 
@@ -10,7 +10,7 @@
   file: dest=/foo/bar.sh mode=a+x
 
 - name: Change file permission when copying for multiple files
-  copy: src={{ item.src }} dest={{ item.dest }}
+  copy: src={{ item.src }} dest={{ item.dest }} mode={{ item.mode }}
   with_items:
     - { src: "foo/bar.sh", dest: "foo/bar.sh", mode: a+x }
 
