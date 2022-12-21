@@ -6,4 +6,5 @@
     - base
     - tty
     - user
+    - services
     - applications

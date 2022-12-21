@@ -1,0 +1,21 @@
+- name: Ensures .config/systemd/user directory exists
+  file: path={{ ansible_env.HOME }}/.config/systemd/user state=directory
+
+- name: Copy service files
+  copy:
+    src: "{{ ansible_env.PWD }}/roles/services/files/autostart/"
+    dest: "{{ ansible_env.HOME }}/.config/systemd/user/"
+
+- name: Activate services
+  command: systemctl --user add-wants autostart.target {{ item.service }}.service
+  with_items:
+    - { service: 'clipman' }
+    - { service: 'flameshot' }
+    - { service: 'google-chat' }
+    - { service: 'jetbrains-toolbox' }
+    - { service: 'owncloud' }
+    - { service: 'power-manager' }
+    - { service: 'slimbookbattery' }
+    - { service: 'steam' }
+    - { service: 'whatsapp' }
+    - { service: 'xpad' }
