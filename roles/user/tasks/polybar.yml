@@ -5,14 +5,15 @@
       - polybar
     state: present
 
-- name: Get current user
-  command: whoami
-  changed_when: false
-  become: false
-  register: whoami
-
 - name: Copy polybar config files
-  become_user: "{{  whoami.stdout }}"
   copy:
     src: "{{ ansible_env.PWD }}/roles/user/files/.config/polybar/"
     dest: "{{ ansible_env.HOME }}/.config/polybar/"
+
+- name: Change file permission for polybar executables
+  file: dest=/{{ item.dest }}
+  with_items:
+    - { dest: "{{ ansible_env.HOME }}/.config/polybar/launch.sh", mode: +x }
+    - { dest: "{{ ansible_env.HOME }}/.config/polybar/scripts/notification-clear.sh", mode: +x }
+    - { dest: "{{ ansible_env.HOME }}/.config/polybar/scripts/notification-open-all.sh", mode: +x }
+    - { dest: "{{ ansible_env.HOME }}/.config/polybar/scripts/package-updates.sh", mode: +x }
