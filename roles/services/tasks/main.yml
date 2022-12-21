@@ -13,9 +13,10 @@
     - { service: 'flameshot' }
     - { service: 'google-chat' }
     - { service: 'jetbrains-toolbox' }
+    - { service: 'nm-applet' }
     - { service: 'owncloud' }
     - { service: 'power-manager' }
     - { service: 'slimbookbattery' }
-    - { service: 'steam' }
+    # - { service: 'steam' }
     - { service: 'whatsapp' }
     - { service: 'xpad' }

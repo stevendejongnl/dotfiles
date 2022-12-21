@@ -17,6 +17,7 @@
       - lxsession-gtk3
       - xorg
       - xorg-xinit
+      - network-manager-applet
       - zsh
       - xss-lock
       - xsecurelock

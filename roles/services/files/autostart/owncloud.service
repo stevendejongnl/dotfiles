@@ -1,5 +1,5 @@
 [Unit]
-Description=flameshot
+Description=Owncloud Client
 
 [Service]
-ExecStart=flameshot
+ExecStart=owncloud

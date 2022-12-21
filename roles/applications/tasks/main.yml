@@ -1,2 +1,21 @@
-- name: Install applications
+- name: Install Beyond Compare application
   import_tasks: bcompare.yml
+
+- name: Install applications
+  become: yes
+  package:
+    name:
+      - flameshot
+      - owncloud-client
+      - xfce4-clipman-plugin
+      - xfce4-power-manager
+      - xpad
+
+- name: Install yay applications
+  aur:
+    use: yay
+    name:
+      - google-chat-linux-bin
+      - jetbrains-toolbox
+      - slimbookbattery
+      - whatsapp-nativefier
