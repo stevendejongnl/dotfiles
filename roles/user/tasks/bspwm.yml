@@ -9,3 +9,8 @@
   copy:
     src: "{{ ansible_env.PWD }}/roles/user/files/.config/bspwm/"
     dest: "{{ ansible_env.HOME }}/.config/bspwm/"
+
+- name: Change file permission for bspwm executables
+  file: dest={{ item.dest }} mode={{ item.mode }}
+  with_items:
+    - { dest: "{{ ansible_env.HOME }}/.config/bspwm/bspwmrc", mode: +x }
