@@ -7,6 +7,9 @@
 - name: Install dunst and copy files
   import_tasks: dunst.yml
 
+- name: Copy kdocker files
+  import_tasks: kdocker.yml
+
 - name: Copy GTK 3.0 files
   import_tasks: gtk-3.0.yml
 

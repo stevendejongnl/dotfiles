@@ -17,5 +17,6 @@
     name:
       - google-chat-linux-bin
       - jetbrains-toolbox
+      - kdocker
       - slimbookbattery
       - whatsapp-nativefier

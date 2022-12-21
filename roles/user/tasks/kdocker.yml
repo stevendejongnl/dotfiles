@@ -1,0 +1,5 @@
+- name: Copy kdocker config files
+  copy:
+    src: "{{ ansible_env.PWD }}/roles/user/files/.config/com.kdocker/"
+    dest: "{{ ansible_env.HOME }}/.config/com.kdocker/"
+    backup: yes
