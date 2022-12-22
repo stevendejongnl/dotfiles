@@ -1,16 +1,9 @@
 #! /bin/bash
 
-VERBOSE=''
-CHECK=''
-DIFF=''
+if [[ "$1" == "-v" ]] || [[ "$1" == "--verbose" ]]; then
+    echo "Verbose mode"
+    ansible-playbook --ask-become-pass --verbose roles.yml
+    exit 0
+fi
 
-while getopts verbose:check:diff: flag
-do
-    case "${flag}" in
-        verbose) VERBOSE='--verbose';;
-        check) CHECK='--check';;
-        diff) DIFF='--diff';;
-    esac
-done
-
-ansible-playbook --ask-become-pass $VERBOSE $CHECK $DIFF roles.yml
+ansible-playbook --ask-become-pass roles.yml
