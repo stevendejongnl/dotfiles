@@ -1,10 +1,10 @@
 #! /bin/bash
 
-while getopts -v:--verbose:-c:--check: flag
+while getopts verbose:check: flag
 do
     case "${flag}" in
-        -v | --verbose) VERBOSE=${OPTARG};;
-        -c | --check) CHECK=${OPTARG};;
+        verbose) VERBOSE='--verbose';;
+        check) CHECK='--check';;
     esac
 done
 
