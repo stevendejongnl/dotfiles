@@ -28,14 +28,19 @@
   with_items:
     - { service: 'clipman' }
     - { service: 'flameshot' }
-    - { service: 'google-chat', when: ansible_virtualization_role == "host" }
-    - { service: 'jetbrains-toolbox', when: ansible_virtualization_role == "host" }
-    - { service: 'kdocker', when: ansible_virtualization_role == "host" }
     - { service: 'nm-applet' }
-    - { service: 'obsidian', when: ansible_virtualization_role == "host" }
-    - { service: 'owncloud', when: ansible_virtualization_role == "host" }
-    - { service: 'power-manager', when: ansible_virtualization_role == "host" }
-    - { service: 'slimbookbattery', when: ansible_virtualization_role == "host" }
-    - { service: 'steam', when: ansible_virtualization_role == "host" }
-    - { service: 'whatsapp', when: ansible_virtualization_role == "host" }
     - { service: 'xpad' }
+
+- name: Activate services for non virtualization systems
+  command: systemctl --user add-wants autostart.target {{ item.service }}.service
+  with_items:
+    - { service: 'google-chat' }
+    - { service: 'jetbrains-toolbox' }
+    - { service: 'kdocker' }
+    - { service: 'obsidian' }
+    - { service: 'owncloud' }
+    - { service: 'power-manager' }
+    - { service: 'slimbookbattery' }
+    - { service: 'steam' }
+    - { service: 'whatsapp' }
+  when: ansible_virtualization_role == "host"
