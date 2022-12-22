@@ -2,7 +2,7 @@
   file: path={{ ansible_env.HOME }}/.config/systemd/user state=directory
 
 - name: Create services
-  template: src={{ ansible_env.PWD }}/roles/services/templates/service.jinja2" dest="{{ ansible_env.HOME }}/.config/systemd/user/{{ item.name }}.service"
+  template: src="{{ ansible_env.PWD }}/roles/services/templates/service.jinja2" dest="{{ ansible_env.HOME }}/.config/systemd/user/{{ item.name }}.service"
   with_items:
     - { name: 'clipman', exec: 'xfce4-clipman' }
     - { name: 'flameshot', exec: 'flameshot' }
