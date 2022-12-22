@@ -33,6 +33,7 @@
       - noto-fonts-cjk
       - noto-fonts-emoji
       - noto-fonts-extra
+      - ttf-ubuntumono-nerd
 
       # Nice to haves
       - direnv
@@ -88,6 +89,11 @@
     use: yay
     name:
       - ntfd-bin
+
+      # fonts
+      - ttf-weather-icons
+      - ttf-material-icons-git
+      - siji-ttf
 
 - name: Install Oh-my-zsh
   become: yes
