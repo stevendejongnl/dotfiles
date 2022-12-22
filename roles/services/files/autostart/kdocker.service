@@ -1,5 +1,0 @@
-[Unit]
-Description=Kdocker
-
-[Service]
-ExecStart=kdocker

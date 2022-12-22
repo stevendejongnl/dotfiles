@@ -1,10 +1,27 @@
 - name: Ensures .config/systemd/user directory exists
   file: path={{ ansible_env.HOME }}/.config/systemd/user state=directory
 
-- name: Copy service files
+- name: Create services
+  template: src={{ ansible_env.PWD }}/roles/services/templates/service.jinja2" dest="{{ ansible_env.HOME }}/.config/systemd/user/{{ item.name }}.service"
+  with_items:
+    - { name: 'clipman', exec: 'xfce4-clipman' }
+    - { name: 'flameshot', exec: 'flameshot' }
+    - { name: 'google-chat', exec: '/opt/google-chat-linux/google-chat-linux %U' }
+    - { name: 'jetbrains-toolbox', exec: '/home/stevendejong/.local/share/JetBrains/Toolbox/bin/jetbrains-toolbox --minimize' }
+    - { name: 'kdocker', exec: 'kdocker' }
+    - { name: 'nm-applet', exec: 'nm-applet' }
+    - { name: 'obsidian', exec: 'obsidian' }
+    - { name: 'owncloud', exec: 'owncloud' }
+    - { name: 'power-manager', exec: 'xfce4-power-manager' }
+    - { name: 'slimbookbattery', exec: 'python3 /usr/share/slimbookbattery/src/slimbookbatteryindicator.py' }
+    - { name: 'steam', exec: '/usr/bin/steam-runtime %U' }
+    - { name: 'whatsapp', exec: 'whatsapp-nativefier' }
+    - { name: 'xpad', exec: 'xpad' }
+
+- name: Ensure autostart.target file exists
   copy:
-    src: "{{ ansible_env.PWD }}/roles/services/files/autostart/"
-    dest: "{{ ansible_env.HOME }}/.config/systemd/user/"
+    src: "{{ ansible_env.PWD }}/roles/services/files/autostart/autostart.target"
+    dest: "{{ ansible_env.HOME }}/.config/systemd/user/autostart.target"
 
 - name: Activate services
   command: systemctl --user add-wants autostart.target {{ item.service }}.service
@@ -19,6 +36,6 @@
     - { service: 'owncloud' }
     - { service: 'power-manager' }
     - { service: 'slimbookbattery' }
-    # - { service: 'steam' }
+    - { service: 'steam' }
     - { service: 'whatsapp' }
     - { service: 'xpad' }
