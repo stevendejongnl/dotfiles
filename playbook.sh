@@ -2,13 +2,15 @@
 
 VERBOSE=''
 CHECK=''
+DIFF=''
 
-while getopts verbose:check: flag
+while getopts verbose:check:diff: flag
 do
     case "${flag}" in
         verbose) VERBOSE='--verbose';;
         check) CHECK='--check';;
+        diff) DIFF='--diff';;
     esac
 done
 
-ansible-playbook --ask-become-pass $VERBOSE $CHECK roles.yml
+ansible-playbook --ask-become-pass $VERBOSE $CHECK $DIFF roles.yml
