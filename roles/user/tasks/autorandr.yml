@@ -3,6 +3,7 @@
   package:
     name:
       - autorandr
+      - arandr
     state: present
 
 - name: Copy autorandr config directories
