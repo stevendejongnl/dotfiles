@@ -1,9 +1,14 @@
 #! /bin/bash
 
-if [[ "$1" == "-v" ]] || [[ "$1" == "--verbose" ]]; then
-    echo "Verbose mode"
-    ansible-playbook --ask-become-pass --verbose roles.yml
-    exit 0
-fi
+while getopts -v:--verbose:-c:--check: flag
+do
+    case "${flag}" in
+        -v | --verbose) VERBOSE=${OPTARG};;
+        -c | --check) CHECK=${OPTARG};;
+    esac
+done
 
-ansible-playbook --ask-become-pass roles.yml
+${VERBOSE:-''}
+${CHECK:-''}
+
+ansible-playbook --ask-become-pass $VERBOSE $CHECK roles.yml
