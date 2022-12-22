@@ -92,9 +92,16 @@
 
       # fonts
       - ttf-weather-icons
-      #- ttf-material-icons-git  #Big?
-      - ttf-material-design-icons
       - siji-ttf
+
+- name: Install base yay packages for a non virtualization system
+  aur:
+    use: yay
+    name:
+      # fonts
+      - ttf-material-icons-git
+  when: ansible_virtualization_role == "host"
+  
 
 - name: Install Oh-my-zsh
   become: yes
