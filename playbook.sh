@@ -1,5 +1,8 @@
 #! /bin/bash
 
+VERBOSE=''
+CHECK=''
+
 while getopts verbose:check: flag
 do
     case "${flag}" in
@@ -7,8 +10,5 @@ do
         check) CHECK='--check';;
     esac
 done
-
-${VERBOSE:-''}
-${CHECK:-''}
 
 ansible-playbook --ask-become-pass $VERBOSE $CHECK roles.yml
