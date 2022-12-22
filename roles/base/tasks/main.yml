@@ -92,7 +92,8 @@
 
       # fonts
       - ttf-weather-icons
-      - ttf-material-icons-git
+      #- ttf-material-icons-git  #Big?
+      - ttf-material-design-icons
       - siji-ttf
 
 - name: Install Oh-my-zsh
