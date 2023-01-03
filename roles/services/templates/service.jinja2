@@ -2,4 +2,10 @@
 Description={{ item.name }}
 
 [Service]
+{%- if item.type -%}
+type={{ item.type }}
+{%- endif -%}
 ExecStart={{ item.exec }}
+{%- if item.delay -%}
+ExecStartPre=/bin/sleep {{ item.delay }}
+{%- endif -%}
