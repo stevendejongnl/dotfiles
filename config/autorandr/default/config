@@ -12,11 +12,10 @@ x-prop-tearfree auto
 x-prop-underscan off
 x-prop-underscan_hborder 0
 x-prop-underscan_vborder 0
-output DisplayPort-2
+output DisplayPort-1
 crtc 0
 mode 1920x1080
 pos 0x1080
-primary
 rate 144.00
 x-prop-max_bpc 8
 x-prop-non_desktop 0
@@ -25,7 +24,7 @@ x-prop-tearfree auto
 x-prop-underscan off
 x-prop-underscan_hborder 0
 x-prop-underscan_vborder 0
-output DisplayPort-1
+output DisplayPort-2
 crtc 1
 mode 1920x1080
 pos 1920x1080

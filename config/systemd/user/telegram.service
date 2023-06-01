@@ -1,0 +1,11 @@
+[Unit]
+Description=Telegram
+Requires=network-online.target
+After=network-online.target
+
+[Service]
+ExecStartPre=/usr/bin/sleep 10
+ExecStart=/usr/bin/telegram-desktop -startintray %U
+
+[Install]
+WantedBy=autostart.target

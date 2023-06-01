@@ -1,0 +1,22 @@
+{
+	"folders": [
+		{
+			"path": "bspwm"
+		},
+		{
+			"path": "picom"
+		},
+		{
+			"path": "polybar"
+		},
+		{
+			"path": "sxhkd"
+		},
+		{
+			"path": "systemd"
+		},
+		{
+			"path": "X11"
+		}
+	]
+}

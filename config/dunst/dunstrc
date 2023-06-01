@@ -287,4 +287,8 @@
     appname = "xfce4-power-manager"
     history_ignore = yes
 
+[spotify-ignore]
+    appname = "Spotify"
+    history_ignore = yes
+
 # vim: ft=cfg

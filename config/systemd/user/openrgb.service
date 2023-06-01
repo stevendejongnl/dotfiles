@@ -1,0 +1,9 @@
+[Unit]
+Description=openrgb
+After=bspwm.target
+
+[Service]
+ExecStart=openrgb --startminimized --profile "PC Default"
+
+[Install]
+WantedBy=autostart.target

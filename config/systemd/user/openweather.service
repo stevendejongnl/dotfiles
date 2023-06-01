@@ -1,0 +1,10 @@
+[Unit]
+Description=Openweather Generate
+Requires=network-online.target
+After=network-online.target
+
+[Service]
+ExecStart=/home/stevendejong/.config/ntfd/generate.sh
+
+[Install]
+WantedBy=autostart.target

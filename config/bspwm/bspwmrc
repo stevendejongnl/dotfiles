@@ -1,11 +1,8 @@
 #! /bin/sh
 
 BSPWM_CONFIG=$HOME/.config/bspwm
-POLYBAR_CONFIG=$HOME/.config/polybar
 
-source $BSPWM_CONFIG/monitor-setup.sh
-source $BSPWM_CONFIG/styling.sh
 source $BSPWM_CONFIG/workspaces.sh
-source $BSPWM_CONFIG/rules.sh
-source $BSPWM_CONFIG/init.sh
-source $POLYBAR_CONFIG/launch.sh
+source $BSPWM_CONFIG/styling.sh
+
+bspc config external_rules_command $BSPWM_CONFIG/rules.sh

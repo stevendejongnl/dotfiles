@@ -22,4 +22,3 @@ if [ "$updates" -gt 0 ]; then
 else
     echo
 fi
-

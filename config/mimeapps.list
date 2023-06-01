@@ -1,17 +1,23 @@
 [Default Applications]
-text/html=google-chrome.desktop
-x-scheme-handler/http=google-chrome.desktop
-x-scheme-handler/https=google-chrome.desktop
-x-scheme-handler/about=google-chrome.desktop
-x-scheme-handler/unknown=google-chrome.desktop
+text/html=brave-browser.desktop
+x-scheme-handler/http=brave.desktop
+x-scheme-handler/https=brave.desktop
+x-scheme-handler/about=brave-browser.desktop
+x-scheme-handler/unknown=brave-browser.desktop
 x-scheme-handler/jetbrains=jetbrains-toolbox.desktop
 x-scheme-handler/jetbrains-gateway=jetbrains-gateway.desktop
 inode/directory=thunar.desktop
 image/jpeg=org.nomacs.ImageLounge.desktop
 x-scheme-handler/eclipse+command=_usr_lib_dbeaver_.desktop
 x-scheme-handler/tg=userapp-Telegram Desktop-B5NKU1.desktop
+application/gzip=xarchiver.desktop
+application/octet-stream=codium.desktop
 
 [Added Associations]
-image/jpeg=org.nomacs.ImageLounge.desktop;mupdf.desktop;deepin-image-viewer.desktop;
+image/jpeg=mirage.desktop;org.nomacs.ImageLounge.desktop;mupdf.desktop;deepin-image-viewer.desktop;
 application/x-shellscript=org.gnome.gedit.desktop;
 x-scheme-handler/tg=userapp-Telegram Desktop-B5NKU1.desktop;
+application/x-desktop=vscodium.desktop;org.gnome.gedit.desktop;code.desktop;
+application/gzip=xarchiver.desktop;
+application/octet-stream=vscodium.desktop;codium.desktop;
+image/heif=org.gnome.eog.desktop;

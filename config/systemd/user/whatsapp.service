@@ -1,0 +1,11 @@
+[Unit]
+Description=WhatsApp
+Requires=network-online.target
+After=network-online.target
+
+[Service]
+ExecStartPre=/usr/bin/sleep 10
+ExecStart=whatsapp-nativefier
+
+[Install]
+WantedBy=autostart.target
