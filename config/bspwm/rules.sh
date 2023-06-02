@@ -11,11 +11,11 @@ main () {
             eval "$consequences"
             [ "$state" ] || echo "desktop=^1 state=floating follow=on center=on"
             ;;
-        "whatsapp-nativefier-d40211"|"TelegramDesktop")
+        "google-chat-linux"|"whatsapp-nativefier-d40211"|"TelegramDesktop"|"chatterino")
             eval "$consequences"
             [ "$state" ] || echo "desktop=^1 follow=on"
             ;;
-        "Pavucontrol")
+        "Pavucontrol"|"jetbrains-toolbox")
             eval "$consequences"
             [ "$state" ] || echo "state=floating follow=on center=on"
             ;;

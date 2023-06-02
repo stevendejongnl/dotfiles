@@ -1,0 +1,11 @@
+[Unit]
+Description=stackstorage
+Requires=network-online.target
+After=network-online.target
+
+[Service]
+ExecStartPre=/usr/bin/sleep 10
+ExecStart=stack-client
+
+[Install]
+WantedBy=autostart.target

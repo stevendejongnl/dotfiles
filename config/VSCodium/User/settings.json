@@ -1,4 +1,24 @@
 {
+    "[typescript]": {
+        "editor.defaultFormatter": "mblode.pretty-formatter"
+    },
+    "[jsonc]": {
+        "editor.defaultFormatter": "mblode.pretty-formatter"
+    },
+    "[javascript]": {
+        "editor.defaultFormatter": "mblode.pretty-formatter"
+    },
+    "typescript.npm": "/home/stevendejong/.nvm/versions/node/v16.18.0/bin/npm",
+    "editor.fontFamily": "'UbuntuMono Nerd Font', 'Font Awesome 5 Pro', 'Droid Sans Mono', 'monospace', monospace",
+    "git.autofetch": true,
     "workbench.colorTheme": "Nord",
-    "files.maxMemoryForLargeFilesMB": 8192
+    "files.maxMemoryForLargeFilesMB": 8192,
+    "files.autoSave": "afterDelay",
+    "files.autoSaveDelay": 5000,
+    "redhat.telemetry.enabled": false,
+    "python.defaultInterpreterPath": "/home/stevendejong/.virtualenvs/default",
+    "security.workspace.trust.untrustedFiles": "open",
+    "[typescriptreact]": {
+        "editor.defaultFormatter": "mblode.pretty-formatter"
+    }
 }

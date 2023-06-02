@@ -3,7 +3,7 @@ Description=polybar
 After=1password.service
 
 [Service]
-ExecStart=/home/stevendejong/.config/polybar/launch.sh
+ExecStart=/bin/bash -c 'if [ -f /home/stevendejong/.config/polybar/launch_desktop.sh ]; then /home/stevendejong/.config/polybar/launch_desktop.sh; else /home/stevendejong/.config/polybar/launch_laptop.sh; fi'
 
 [Install]
 WantedBy=autostart.target
