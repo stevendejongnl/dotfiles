@@ -1,10 +1,10 @@
 [Unit]
-Description=WhatsApp
+Description=beeper
 Requires=network-online.target
 After=network-online.target
 
 [Service]
-ExecStart=whatsapp-nativefier
+ExecStart=/bin/bash -c 'exec /home/stevendejong/Applications/beeper-*.AppImage'
 
 [Install]
 WantedBy=autostart.target

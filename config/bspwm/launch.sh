@@ -10,5 +10,6 @@ elif [[ $1 == "reload" ]]; then
 
     bspc wm -r;
     bspc desktop -f ^1 --follow
+    systemctl --user restart polybar.service
     notify-send -i monitor 'bspwm' 'Reloaded';
 fi

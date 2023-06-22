@@ -1,0 +1,10 @@
+[Unit]
+Description=Barrier Client daemon
+After=network.target
+
+[Service]
+ExecStart=barrierc -f --name computer-sloeber archworkstation
+Restart=always
+
+[Install]
+WantedBy=autostart.target

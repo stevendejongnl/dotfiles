@@ -2,7 +2,7 @@
 /usr/bin/autorandr --change
 
 CONNECTED_SPACE=$(autorandr --current)
-SPACE_DEFAULT="default"
+SPACE_LAPTOP="laptop"
 SPACE_OFFICE="office"
 SPACE_OFFICE_HDMI="office-hdmi"
 SPACE_HOME="home"
@@ -13,7 +13,7 @@ EXTERNAL_MONITOR_HDMI="HDMI-A-0"
 AOC_PRIMARY="DisplayPort-2"
 AOC_SECONDARY="DisplayPort-1"
 
-if [ "$CONNECTED_SPACE" = "$SPACE_DEFAULT" ]; then
+if [ "$CONNECTED_SPACE" = "$SPACE_LAPTOP" ]; then
     bspc monitor "$INTERNAL_MONITOR" -d 1 2 3 4 5 6 7 8 9 0
 
     bspc monitor "$EXTERNAL_MONITOR_DP" --remove

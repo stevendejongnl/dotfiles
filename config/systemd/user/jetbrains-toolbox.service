@@ -4,7 +4,6 @@ Requires=network-online.target
 After=network-online.target
 
 [Service]
-ExecStartPre=/usr/bin/sleep 10
 ExecStart=/home/stevendejong/.local/share/JetBrains/Toolbox/bin/jetbrains-toolbox --minimize
 
 [Install]

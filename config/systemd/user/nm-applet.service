@@ -1,6 +1,6 @@
 [Unit]
 Description=Network Manager Applet
-After=bspwm.target
+After=dwm.target
 
 [Service]
 ExecStart=nm-applet

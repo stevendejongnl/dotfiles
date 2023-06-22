@@ -1,6 +1,6 @@
 [Unit]
 Description=Power Manager
-After=bspwm.target
+After=dwm.target
 
 [Service]
 ExecStart=xfce4-power-manager

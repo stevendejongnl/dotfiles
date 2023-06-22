@@ -14,7 +14,7 @@ super + Return
 
 # program launcher
 super + @space
-    $HOME/.config/rofi/launchers/type-1/launcher.sh 
+    $HOME/.config/rofi/launch.sh 
 
 # quit/restart bspwm
 super + alt + {q,r}

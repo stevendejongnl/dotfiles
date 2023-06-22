@@ -11,7 +11,7 @@
     "typescript.npm": "/home/stevendejong/.nvm/versions/node/v16.18.0/bin/npm",
     "editor.fontFamily": "'UbuntuMono Nerd Font', 'Font Awesome 5 Pro', 'Droid Sans Mono', 'monospace', monospace",
     "git.autofetch": true,
-    "workbench.colorTheme": "Nord",
+    "workbench.colorTheme": "Catppuccin Mocha",
     "files.maxMemoryForLargeFilesMB": 8192,
     "files.autoSave": "afterDelay",
     "files.autoSaveDelay": 5000,
@@ -20,5 +20,32 @@
     "security.workspace.trust.untrustedFiles": "open",
     "[typescriptreact]": {
         "editor.defaultFormatter": "mblode.pretty-formatter"
-    }
+    },
+    "debug.onTaskErrors": "debugAnyway",
+    "wallaby.startAutomatically": false,
+    "javascript.format.semicolons": "remove",
+    "typescript.format.semicolons": "remove",
+	"search.exclude": {
+        "**/VSCodium/Cache": true,
+        "**/VSCodium/CachedConfigurations": true,
+        "**/VSCodium/CachedData": true,
+        "**/VSCodium/CachedExtensions": true,
+        "**/VSCodium/CachedExtensionVSIXs": true,
+        "**/VSCodium/CachedProfilesData": true,
+        "**/VSCodium/User/History": true,
+    },
+    "files.exclude": {
+        "**/VSCodium/User/History": true
+    },
+    "editor.tabSize": 2,
+    "javascript.preferences.quoteStyle": "single",
+    "typescript.preferences.quoteStyle": "single",
+    "launch": {
+        "configurations": [
+            
+        ],
+        "compounds": []
+    },
+    "window.openFilesInNewWindow": "on",
+    "window.openFoldersInNewWindow": "on"
 }

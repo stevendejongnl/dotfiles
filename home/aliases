@@ -1,23 +1,36 @@
 #! /bin/zsh
 
 # Global aliases
+alias vim="nvim"
 alias clear_ram="sudo sh -c 'free -h; echo 3 > /proc/sys/vm/drop_caches; swapoff -a; swapon -a; free -h'"
 alias lg="lazygit"
-alias docker-compose="docker compose"
-alias pacman-cleanup="sudo pacman -Rsn \$(pacman -Qdtq)"
-alias yay-rebuild="yay -S --rebuild --answerclean A --answerdiff N \$(checkrebuild | cut -d' ' -f2)"
+alias update-portainer="$HOME/update-portainer.sh"
+alias vpn="sudo openvpn --config .openvpn3/autoload/cloudsuite.ovpn"
+alias vpnlocal="sudo openvpn --config .openvpn3/autoload/local.ovpn"
+alias vpn3="openvpn3 session-start --config .openvpn3/autoload/cloudsuite.ovpn"
+alias vpn3local="sudo openvpn3 session-start --config .openvpn3/autoload/local.ovpn"
+alias change-wallpaper="/home/stevendejong/.config/systemd/user/scripts/wallpaper.sh"
+alias used-ports="sudo lsof -i -P -n | grep LISTEN"
 
 
 function bluecon {
-    if [[ $1 == "headphone" ]]; then
-        bluetoothctl connect 70:26:05:88:2E:71
+    device=$1
+    if [[ $device == "headphone" ]]; then
+        bluetoothctl connect "70:26:05:88:2E:71"
     fi
 
-    if [[ $1 == "airpods" ]]; then
-        bluetoothctl connect 60:93:16:3C:D3:B9
+    if [[ $device == "airpods" ]]; then
+        bluetoothctl connect "60:93:16:3C:D3:B9"
+    fi
+
+    if [[ $device == "soundbar" ]]; then
+        bluetoothctl connect "D8:E3:A7:D1:36:71"
     fi
 }
 
+alias btheadphone="bluecon headphone"
+alias btairpods="bluecon airpods"
+alias btsoundbar="bluecon soundbar"
 
 function cloudsuite_cli {
    CSCONFIG="$HOME/workspace/trydent/docker-compose.yml"
