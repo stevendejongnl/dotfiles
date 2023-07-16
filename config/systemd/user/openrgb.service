@@ -1,6 +1,6 @@
 [Unit]
 Description=openrgb
-After=bspwm.target
+After=dwm.target
 
 [Service]
 ExecStart=openrgb --startminimized --profile "PC Default"

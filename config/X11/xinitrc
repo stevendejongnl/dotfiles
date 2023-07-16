@@ -1,31 +1,33 @@
 xrdb $HOME/.config/X11/xresources
 
-
 # This rule is needed when no display manager is used (Removed sddm and use startx instead)
 dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY
 
 pgrep -x numlockx > /dev/null || numlockx &
-pgrep -x sxhkd > /dev/null || sxhkd &
 pgrep -x picom > /dev/null || picom &
 pgrep -x ntfd > /dev/null || ntfd &
-
+pgrep -x lxpolkit > /dev/null || lxpolkit &
+pgrep -x slstatus > /dev/null || slstatus &
 
 # Start Polkit agent
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 
-eval $(dbus-launch --sh-syntax --exit-with-session)
-eval $(ssh-agent)
-export SSH_AUTH_SOCK
-
-# https://www.reddit.com/r/bspwm/comments/kf7077/no_cursor_on_startup_appears_when_opening_a/
-xsetroot -cursor_name left_ptr
+# eval $(dbus-launch --sh-syntax --exit-with-session)
+# eval $(ssh-agent)
+# export SSH_AUTH_SOCK
 
 xset -dpms
 xset s off # if you also want to disable the screen saver
 
-# Background color
-xsetroot -solid "#3B4252"
+# https://www.reddit.com/r/bspwm/comments/kf7077/no_cursor_on_startup_appears_when_opening_a/
+xsetroot -cursor_name left_ptr
 
-systemctl --user start autostart.target
+xset +fp $HOME/.local/share/fonts
+xset +fp /usr/share/fonts &
+fc-cache -fv
+xset fp rehash &
 
-exec bspwm
+# Hide cursor after x time
+unclutter -idle 3 &
+
+exec dwm > $HOME/.logs/dwm.log 2>&1

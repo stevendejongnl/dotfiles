@@ -1,6 +1,6 @@
 [Unit]
 Description=flameshot
-After=bspwm.target
+After=dwm.target
 
 [Service]
 ExecStart=flameshot

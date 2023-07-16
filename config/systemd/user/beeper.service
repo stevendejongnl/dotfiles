@@ -1,11 +1,10 @@
 [Unit]
-Description=Chatterino
+Description=beeper
 Requires=network-online.target
 After=network-online.target
 
 [Service]
-ExecStartPre=/usr/bin/sleep 10
-ExecStart=/usr/bin/chatterino
+ExecStart=/bin/bash -c 'exec /home/stevendejong/Applications/beeper-*.AppImage'
 
 [Install]
 WantedBy=autostart.target

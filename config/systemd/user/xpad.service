@@ -1,6 +1,6 @@
 [Unit]
 Description=Xpad
-After=bspwm.target
+After=dwm.target
 
 [Service]
 ExecStart=xpad

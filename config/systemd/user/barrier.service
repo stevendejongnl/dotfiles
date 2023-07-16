@@ -1,0 +1,9 @@
+[Unit]
+Description=Barrier Server daemon
+After=network.target
+
+[Service]
+ExecStart=barriers -f --no-tray --name archworkstation --disable-client-cert-checking --config /home/stevendejong/.config/barrier/barrier.conf
+
+[Install]
+WantedBy=autostart.target

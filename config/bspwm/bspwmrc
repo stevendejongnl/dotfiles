@@ -2,8 +2,12 @@
 
 BSPWM_CONFIG=$HOME/.config/bspwm
 
-source $BSPWM_CONFIG/workspaces_desktop.sh
-source $BSPWM_CONFIG/workspaces_laptop.sh
+if [ -f $BSPWM_CONFIG/workspaces_desktop.sh ]; then
+    source $BSPWM_CONFIG/workspaces_desktop.sh
+else
+    source $BSPWM_CONFIG/workspaces_laptop.sh
+fi
+
 source $BSPWM_CONFIG/styling.sh
 
 bspc config external_rules_command $BSPWM_CONFIG/rules.sh
