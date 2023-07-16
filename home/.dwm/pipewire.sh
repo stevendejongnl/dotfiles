@@ -1,0 +1,50 @@
+#!/bin/sh
+
+getDefaultSink() {
+    defaultSink=$(pactl info | awk -F : '/Default Sink:/{print $2}')
+    description=$(pactl list sinks | sed -n "/${defaultSink}/,/Description/s/^\s*Description: \(.*\)/\1/p")
+
+    if [[ $description == *"Family 17h/19h HD Audio"* ]]; then
+        echo "Speakers"
+    else
+        echo "${description}"
+    fi
+}
+
+getDefaultSource() {
+    defaultSource=$(pactl info | awk -F : '/Default Source:/{print $2}')
+    description=$(pactl list sources | sed -n "/${defaultSource}/,/Description/s/^\s*Description: \(.*\)/\1/p")
+    echo "${description}"
+}
+
+VOLUME=$(pamixer --get-volume)
+VOLUME_HUMAN=$(pamixer --get-volume-human)
+MUTED=$(pamixer --get-mute)
+VOLUME_INFO=" ${VOLUME_HUMAN}"
+SINK=$(getDefaultSink)
+SOURCE=$(getDefaultSource)
+
+if [[ $VOLUME -gt 33 && $VOLUME -lt 66 ]]; then
+    VOLUME_INFO=" ${VOLUME_HUMAN}"
+elif [[ $VOLUME -gt 66 ]]; then
+    VOLUME_INFO="  ${VOLUME_HUMAN}"
+fi
+
+if [[ $MUTED == "true" ]]; then
+    VOLUME_INFO=""
+fi
+
+case $1 in
+    "--up")
+        pamixer --increase 5
+        ;;
+    "--down")
+        pamixer --decrease 5
+        ;;
+    "--mute")
+        pamixer --toggle-mute
+        ;;
+    *)
+        # echo "Source: ${SOURCE} | Sink: ${VOLUME} ${SINK}"
+        echo "${VOLUME_INFO} ${SINK} | "
+esac

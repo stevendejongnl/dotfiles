@@ -1,6 +1,6 @@
 [Unit]
 Description=Slimbook Battery
-After=bspwm.target
+After=dwm.target
 
 [Service]
 ExecStart=python3 /usr/share/slimbookbattery/src/slimbookbatteryindicator.py

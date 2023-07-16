@@ -4,7 +4,11 @@ Requires=network-online.target
 After=network-online.target
 
 [Service]
+<<<<<<<< HEAD:config/systemd/user/beeper.service
 ExecStart=/bin/bash -c 'exec /home/stevendejong/Applications/beeper-*.AppImage'
+========
+ExecStart=/usr/bin/chatterino
+>>>>>>>> cfb5a4587f070e50aeeb127fa56043b7fc27ebcf:config/systemd/user/chatterino.service
 
 [Install]
 WantedBy=autostart.target

@@ -1,3 +1,11 @@
+/**
+ *
+ * Author : Aditya Shakya (adi1090x)
+ * Github : @adi1090x
+ * 
+ * Configuration For Rofi Version: 1.7.3
+ **/
+
 configuration {
 	/*---------- General setting ----------*/
 	modi: "drun,run,filebrowser,window";
@@ -172,5 +180,5 @@ configuration {
 */
 }
 
-@theme "catppuccin-mocha"
-
+// @theme "/usr/share/rofi/themes/catppuccin-mocha.rasi"
+@theme "/home/stevendejong/.config/rofi/catppuccin-mocha.rasi"
