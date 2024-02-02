@@ -17,35 +17,7 @@ alias used-ports="sudo lsof -i -P -n | grep LISTEN"
 alias btreset="sudo rmmod btusb && sudo modprobe btusb"
 alias vncserver="x11vnc -display :0"
 alias wakepc="wol -i 192.168.2.3 f0:2f:74:1b:b2:96"
-
-wicon() {
-    connect_wifi() {
-        case $1 in
-            1) nmcli connection up id 'stanja' ;;
-            2) nmcli connection up id 'CloudSuite' ;;
-            3) nmcli connection up id 'Markant' ;;
-            4) nmcli connection up id 'Steven🍟' ;;
-            *) echo 'Invalid choice. Please try again.' ;;
-        esac
-    }
-
-    echo "Available wifi networks:"
-    echo "1. Home"
-    echo "2. CloudSuite"
-    echo "3. Markant"
-    echo "4. iPhone"
-
-    read -p "Select the wifi network you want to connect to [1-4]: " choice
-
-    case $choice in
-        1|2|3|4)
-            connect_wifi $choice
-            ;;
-        *)
-            echo "Invalid choice. Please try again."
-            ;;
-    esac
-}
+alias connect-wifi="python ./scripts/connect_wifi.py"
 
 function _tmux()
 {
