@@ -1,0 +1,169 @@
+#! /bin/zsh
+
+# Global aliases
+alias vim="nvim"
+alias cat="/usr/bin/bat"
+alias clear_ram="sudo sh -c 'free -h; echo 3 > /proc/sys/vm/drop_caches; swapoff -a; swapon -a; free -h'"
+alias lg="lazygit"
+alias update-portainer="$HOME/update-portainer.sh"
+alias vpn="sudo openvpn --config .openvpn3/autoload/cloudsuite.ovpn"
+alias vpnlocal="sudo openvpn --config .openvpn3/autoload/HomeAccess_StevendeJong.ovpn"
+#alias vpn3="openvpn3 session-start --config .openvpn3/autoload/cloudsuite.ovpn"
+alias vpn3="vpn"
+#alias vpn3local="sudo openvpn3 session-start --config .openvpn3/autoload/HomeAccess_StevendeJong.ovpn"
+alias vpn3local="vpnlocal"
+alias change-wallpaper="/home/stevendejong/.config/systemd/user/scripts/wallpaper.sh"
+alias used-ports="sudo lsof -i -P -n | grep LISTEN"
+alias btreset="sudo rmmod btusb && sudo modprobe btusb"
+alias vncserver="x11vnc -display :0"
+alias wakepc="wol -i 192.168.2.3 f0:2f:74:1b:b2:96"
+
+wicon() {
+    connect_wifi() {
+        case $1 in
+            1) nmcli connection up id 'stanja' ;;
+            2) nmcli connection up id 'CloudSuite' ;;
+            3) nmcli connection up id 'Markant' ;;
+            4) nmcli connection up id 'Steven🍟' ;;
+            *) echo 'Invalid choice. Please try again.' ;;
+        esac
+    }
+
+    echo "Available wifi networks:"
+    echo "1. Home"
+    echo "2. CloudSuite"
+    echo "3. Markant"
+    echo "4. iPhone"
+
+    read -p "Select the wifi network you want to connect to [1-4]: " choice
+
+    case $choice in
+        1|2|3|4)
+            connect_wifi $choice
+            ;;
+        *)
+            echo "Invalid choice. Please try again."
+            ;;
+    esac
+}
+
+function _tmux()
+{
+    if [[ $# == 0 ]] && command tmux ls >& /dev/null; then
+        command tmux attach \; choose-tree -s
+    else
+        command tmux "$@"
+    fi
+}
+
+alias tmux=_tmux
+alias tmux-kill="tmux list-sessions | grep -v attached | awk 'BEGIN{FS=\":\"}{print $1}' | xargs -n 1 tmux kill-session -t || echo No sessions to kill"
+
+function bluecon {
+    device=$1
+    if [[ $device == "headphone" ]]; then
+        systemctl start bluetooth
+        bluetoothctl connect "70:26:05:88:2E:71"
+    fi
+
+    if [[ $device == "airpods" ]]; then
+        systemctl start bluetooth
+        bluetoothctl connect "60:93:16:3C:D3:B9"
+    fi
+
+    if [[ $device == "soundbar" ]]; then
+        systemctl start bluetooth
+        bluetoothctl connect "D8:E3:A7:D1:36:71"
+    fi
+}
+
+alias btheadphone="bluecon headphone"
+alias btairpods="bluecon airpods"
+alias btsoundbar="bluecon soundbar"
+
+function cloudsuite_cli {
+   CSCONFIG="$HOME/workspace/trydent/docker-compose.yml"
+   CSCONFIG_OVERRIDE="$HOME/workspace/trydent/docker-compose.override.yml"
+   CSTESTCONFIG="$HOME/workspace/trydent/docker-compose.tests.yml"
+   CSACONFIG="$HOME/workspace/cloudsuite-app/docker-compose.yml"
+
+   POSITIONAL_ARGS=()
+
+   function help {
+      echo "
+      Usage:
+      -l|--log [-c|--container]
+      -r|--redis [-c|--command]
+      -m|--migrate
+      -tr|--trydent
+      -t|--test
+      -a|--app
+      -h|--help
+      "
+   }
+
+   while [[ $# -gt 0 ]]; do
+      case $1 in
+         -l|--log)
+            case $2 in
+               -c|--container)
+                  echo "Start logging for ($3)"
+                  docker logs -f $(docker-compose -f $CSCONFIG -f $CSCONFIG_OVERRIDE ps -q $3)
+                  return
+                  ;;
+               *)
+                  docker-compose -f $CSCONFIG -f $CSCONFIG_OVERRIDE logs -f
+                  return
+                  ;;
+            esac
+            return
+            ;;
+         -r|--redis)
+            case $2 in
+               -c|--command)
+                  echo "Redis cli ($3)"
+                  docker-compose -f $CSCONFIG -f $CSCONFIG_OVERRIDE exec redis redis-cli $3
+                  return
+                  ;;
+               *)
+                  docker-compose -f $CSCONFIG -f $CSCONFIG_OVERRIDE exec redis redis-cli
+                  return
+                  ;;
+            esac
+            return
+            ;;
+         -m|--migrate)
+            docker-compose -f $CSCONFIG -f $CSCONFIG_OVERRIDE exec trytond /srv/trytond/bin/trytond -d fixture --all -v
+            return
+            ;;
+         -a|--app)
+            docker-compose -f $CSACONFIG down && xhost +local:docker; docker-compose -f $CSACONFIG up -d
+            return
+            ;;
+         -tr|trydent)
+	    docker-compose -f $CSCONFIG ${@:2}
+	    return
+	    ;;
+	 -t|--test)
+	    docker-compose -f $CSTESTCONFIG ${@:2}
+	    return
+	    ;;
+         -h|--help)
+            help
+            return
+            ;;
+         -*|--*)
+            echo "Unknown option $1"
+            return
+            ;;
+         *)
+            help
+            POSITIONAL_ARGS+=("$1")
+            shift
+            ;;
+      esac
+   done
+}
+
+alias cs="cloudsuite_cli"
+
