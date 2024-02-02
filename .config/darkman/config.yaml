@@ -1,2 +1,5 @@
-usegeoclue: false
+lat: 52.267078
+lng: 4.756750
+dbusserver: true
+portal: true
 

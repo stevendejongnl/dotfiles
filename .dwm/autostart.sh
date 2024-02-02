@@ -2,9 +2,7 @@
 
 autorandr --change &
 
-systemctl --user start autostart.target &
-
+# sleep 5
 darkman set dark &
-
-sleep 5
 systemctl --user restart wallpaper.service &
+systemctl --user start autostart.target &
