@@ -12,12 +12,12 @@ alias vpnlocal="sudo openvpn --config .openvpn3/autoload/HomeAccess_StevendeJong
 alias vpn3="vpn"
 #alias vpn3local="sudo openvpn3 session-start --config .openvpn3/autoload/HomeAccess_StevendeJong.ovpn"
 alias vpn3local="vpnlocal"
-alias change-wallpaper="/home/stevendejong/.config/systemd/user/scripts/wallpaper.sh"
+alias change-wallpaper="$HOME/.config/systemd/user/scripts/wallpaper.sh"
 alias used-ports="sudo lsof -i -P -n | grep LISTEN"
 alias btreset="sudo rmmod btusb && sudo modprobe btusb"
 alias vncserver="x11vnc -display :0"
 alias wakepc="wol -i 192.168.2.3 f0:2f:74:1b:b2:96"
-alias connect-wifi="python ./scripts/connect_wifi.py"
+alias connect-wifi="python $HOME/scripts/connect_wifi.py"
 
 function _tmux()
 {
