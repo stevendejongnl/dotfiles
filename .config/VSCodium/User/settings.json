@@ -1,4 +1,5 @@
 {
     "workbench.colorTheme": "Solarized Dark",
-    "files.autoSave": "onFocusChange"
+    "files.autoSave": "onFocusChange",
+    "git.autofetch": true
 }
