@@ -1,0 +1,8 @@
+[Unit]
+Description=WhatsApp
+
+[Service]
+ExecStart=whatsapp-nativefier
+
+[Install]
+WantedBy=autostart.target

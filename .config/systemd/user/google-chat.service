@@ -1,0 +1,8 @@
+[Unit]
+Description=Google Chat
+
+[Service]
+ExecStart=/opt/google-chat-linux/google-chat-linux %U
+
+[Install]
+WantedBy=autostart.target

@@ -1,0 +1,8 @@
+[Unit]
+Description=nextcloud
+
+[Service]
+ExecStart=nextcloud
+
+[Install]
+WantedBy=autostart.target

@@ -1,0 +1,9 @@
+[Unit]
+Description=Xpad
+After=dwm.target
+
+[Service]
+ExecStart=xpad
+
+[Install]
+WantedBy=autostart.target

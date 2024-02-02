@@ -1,0 +1,8 @@
+[Unit]
+Description=Openweather Generate
+
+[Service]
+ExecStart=/home/stevendejong/.config/ntfd/generate.sh
+
+[Install]
+WantedBy=autostart.target
