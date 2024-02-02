@@ -1,27 +1,30 @@
 import subprocess
 
+
 def connect_wifi(network_id):
-    subprocess.run(['nmcli', 'connection', 'up', 'id', network_id])
+    subprocess.run(["nmcli", "connection", "up", "id", network_id])
+
 
 def main():
-    networks = {
-        '1': 'stanja',
-        '2': 'CloudSuite',
-        '3': 'Markant',
-        '4': 'Steven🍟'
-    }
+    networks: list[str] = [
+        "stanja",
+        "CloudSuite",
+        "Markant",
+        "Steven🍟",
+    ]
 
     print("Available wifi networks:")
-    for key, value in networks.items():
-        print(f"{key}. {value}")
+    for index, network in enumerate(networks):
+        print(f"{index}. {network}")
 
-    choice = input("Select the wifi network you want to connect to [1-4]: ")
-
-    if choice in networks:
-        connect_wifi(networks[choice])
-    else:
-        print("Invalid choice. Please try again.")
+    choice: int = int(input(f"Select the wifi network you want to connect to [0-{len(networks)}]: "))
+    try:
+        network: str = networks[choice]
+    except Exception:
+        print("Invalid choice, Please try again.")
+        exit(0)
+    
+    connect_wifi(network)
 
 if __name__ == "__main__":
     main()
-
