@@ -1,5 +1,12 @@
 {
     "workbench.colorTheme": "Solarized Dark",
     "files.autoSave": "onFocusChange",
-    "git.autofetch": true
+    "git.autofetch": true,
+    "redhat.telemetry.enabled": false,
+    "[jsonc]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[typescript]": {
+        "editor.defaultFormatter": "vscode.typescript-language-features"
+    }
 }

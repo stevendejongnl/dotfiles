@@ -82,3 +82,4 @@ check_nvm() {
 add-zsh-hook chpwd check_nvm
 check_nvm
 
+eval "$(zoxide init zsh)"
