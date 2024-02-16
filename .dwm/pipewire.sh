@@ -6,6 +6,10 @@ getDefaultSink() {
 
     if [[ $description == *"Family 17h/19h HD Audio"* ]]; then
         echo "Speakers"
+    elif [[ $description == *"airpods"* ]]; then
+        echo "AirPods"
+    elif [[ $description == *"MDR-XB950N1"* ]]; then
+        echo "Headphone"
     else
         echo "${description}"
     fi
