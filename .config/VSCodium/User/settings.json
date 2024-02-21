@@ -8,5 +8,12 @@
     },
     "[typescript]": {
         "editor.defaultFormatter": "vscode.typescript-language-features"
-    }
+    },
+    "git.confirmSync": false,
+    "git.branchProtection": [
+        "main",
+        "master"
+    ],
+    "git.fetchOnPull": true,
+    "git.pruneOnFetch": true
 }
