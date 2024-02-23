@@ -1,6 +1,7 @@
 syntax on
 
-:set mouse=a
-:set clipboard=unnamedplus
+:set mouse=
+:set ttymouse=
+
 :set number relativenumber
 :set nu rnu

@@ -1,2 +1,4 @@
 .idea
 *.code-workspace
+.config/nvim/plugin/packer_compiled.lua
+
