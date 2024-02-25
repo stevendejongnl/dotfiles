@@ -14,7 +14,7 @@ bindkey "^N" vi-down-line-or-history
 [[ -s /etc/profile.d/autojump.sh ]] && source /etc/profile.d/autojump.sh
 
 if [[ ! -d ~/.zplug ]];then
-  git clone https://github.com/zplug/zplug ~/.zplug
+    git clone https://github.com/zplug/zplug ~/.zplug
 fi
 source ~/.zplug/init.zsh
 zplug "plugins/git", from:oh-my-zsh
@@ -38,54 +38,55 @@ zplug load
 eval "$(direnv hook zsh)"
 
 plugins=(
-  direnv
-  git
-  docker
-  history-substring-search
-  zsh-completions
-  zsh-autosuggestions
-  autoupdate
-)
+    direnv
+    git
+    docker
+    history-substring-search
+    zsh-completions
+    zsh-autosuggestions
+    autoupdate
+    wakatime
+    bgnotify)
 
-fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
+    fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
 
-source $ZSH/oh-my-zsh.sh
-source $HOME/.aliases
+    source $ZSH/oh-my-zsh.sh
+    source $HOME/.aliases
 
-autoload -U cominit && compinit
+    autoload -U cominit && compinit
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+    export NVM_DIR="$HOME/.nvm"
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-autoload -U add-zsh-hook
-check_nvm() {
-  local nvmrc_path="$(nvm_find_nvmrc)"
+    autoload -U add-zsh-hook
+    check_nvm() {
+        local nvmrc_path="$(nvm_find_nvmrc)"
 
-  if [ -n "$nvmrc_path" ]; then
-    local nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
+        if [ -n "$nvmrc_path" ]; then
+            local nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
 
-    if [ "$nvmrc_node_version" = "N/A" ]; then
-      nvm install
-    elif [ "$nvmrc_node_version" != "$(nvm version)" ]; then
-      nvm use
-    fi
-  elif [ -f package.json ]; then
-    nodeVersion=$(jq -r '.engines.node | select(.!=null)' package.json )
-    
-    if [ ! -z $nodeVersion ] && [[ ! $(nvm current) = "^v$nodeVersion" ]]; then
-      echo "found $nodeVersion in package.json engine"
-      nvm use ${nodeVersion:0:2}
-    fi
-  fi
-}
-add-zsh-hook chpwd check_nvm
-check_nvm
+            if [ "$nvmrc_node_version" = "N/A" ]; then
+                nvm install
+            elif [ "$nvmrc_node_version" != "$(nvm version)" ]; then
+                nvm use
+            fi
+        elif [ -f package.json ]; then
+            nodeVersion=$(jq -r '.engines.node | select(.!=null)' package.json )
 
-eval "$(zoxide init --cmd cd zsh)"
+            if [ ! -z $nodeVersion ] && [[ ! $(nvm current) = "^v$nodeVersion" ]]; then
+                echo "found $nodeVersion in package.json engine"
+                nvm use ${nodeVersion:0:2}
+            fi
+        fi
+    }
+    add-zsh-hook chpwd check_nvm
+    check_nvm
 
-PATH="/home/stevendejong/perl5/bin${PATH:+:${PATH}}"; export PATH;
-PERL5LIB="/home/stevendejong/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
-PERL_LOCAL_LIB_ROOT="/home/stevendejong/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
-PERL_MB_OPT="--install_base \"/home/stevendejong/perl5\""; export PERL_MB_OPT;
-PERL_MM_OPT="INSTALL_BASE=/home/stevendejong/perl5"; export PERL_MM_OPT;
+    eval "$(zoxide init --cmd cd zsh)"
+
+    PATH="/home/stevendejong/perl5/bin${PATH:+:${PATH}}"; export PATH;
+    PERL5LIB="/home/stevendejong/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+    PERL_LOCAL_LIB_ROOT="/home/stevendejong/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+    PERL_MB_OPT="--install_base \"/home/stevendejong/perl5\""; export PERL_MB_OPT;
+    PERL_MM_OPT="INSTALL_BASE=/home/stevendejong/perl5"; export PERL_MM_OPT;
