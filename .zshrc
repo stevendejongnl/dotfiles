@@ -4,20 +4,16 @@ export TMPDIR=~/tmp/
 export EDITOR='nvim'
 export SPACESHIP_CONFIG="$HOME/.config/spaceship.zsh"
 
-# Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
 bindkey '^R' history-incremental-pattern-search-backward
 bindkey "^P" vi-up-line-or-history
 bindkey "^N" vi-down-line-or-history
 
-[[ -s /etc/profile.d/autojump.sh ]] && source /etc/profile.d/autojump.sh
-
 if [[ ! -d ~/.zplug ]];then
     git clone https://github.com/zplug/zplug ~/.zplug
 fi
 source ~/.zplug/init.zsh
-zplug "plugins/git", from:oh-my-zsh
 zplug "plugins/git", from:oh-my-zsh
 zplug "plugins/sudo", from:oh-my-zsh
 zplug "plugins/command-not-found", from:oh-my-zsh
@@ -25,7 +21,6 @@ zplug "zsh-users/zsh-syntax-highlighting", defer:2
 zplug "zsh-users/zsh-history-substring-search"
 zplug "zsh-users/zsh-completions"
 zplug "spaceship-prompt/spaceship-prompt", use:spaceship.zsh, from:github, as:theme
-zplug "wfxr/forgit"
 if ! zplug check --verbose; then
     printf "Install? [y/N]: "
     if read -q; then
@@ -56,8 +51,8 @@ plugins=(
     autoload -U cominit && compinit
 
     export NVM_DIR="$HOME/.nvm"
-    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
     autoload -U add-zsh-hook
     check_nvm() {
@@ -84,9 +79,3 @@ plugins=(
     check_nvm
 
     eval "$(zoxide init --cmd cd zsh)"
-
-    PATH="/home/stevendejong/perl5/bin${PATH:+:${PATH}}"; export PATH;
-    PERL5LIB="/home/stevendejong/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
-    PERL_LOCAL_LIB_ROOT="/home/stevendejong/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
-    PERL_MB_OPT="--install_base \"/home/stevendejong/perl5\""; export PERL_MB_OPT;
-    PERL_MM_OPT="INSTALL_BASE=/home/stevendejong/perl5"; export PERL_MM_OPT;

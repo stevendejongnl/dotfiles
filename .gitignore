@@ -1,4 +1,8 @@
 .idea
-*.code-workspace
-.config/nvim/plugin/packer_compiled.lua
 
+*.code-workspace
+
+.dwm/package-updates/last-run
+.dwm/package-updates/status
+.config/nvim/plugin/packer_compiled.lua
+.config/tmux/plugins

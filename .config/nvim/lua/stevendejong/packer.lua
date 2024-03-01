@@ -23,6 +23,7 @@ return require('packer').startup(function(use)
     use('theprimeagen/harpoon')
     use('mbbill/undotree')
     use('tpope/vim-fugitive')
+    use('ellisonleao/carbon-now.nvim')
 
     use {
         'VonHeikemen/lsp-zero.nvim',

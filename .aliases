@@ -18,7 +18,6 @@ alias btreset="sudo rmmod btusb && sleep 15 && sudo modprobe btusb"
 alias vncserver="x11vnc -display :0"
 alias wakepc="wol -i 192.168.2.3 f0:2f:74:1b:b2:96"
 alias connect-wifi="python $HOME/scripts/connect_wifi.py"
-alias ls="/usr/bin/ls --color=tty -la"
 
 function _tmux()
 {

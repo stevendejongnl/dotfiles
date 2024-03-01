@@ -1,5 +1,4 @@
 {
-    "workbench.colorTheme": "Solarized Dark",
     "files.autoSave": "onFocusChange",
     "git.autofetch": true,
     "redhat.telemetry.enabled": false,
@@ -15,5 +14,6 @@
         "master"
     ],
     "git.fetchOnPull": true,
-    "git.pruneOnFetch": true
+    "git.pruneOnFetch": true,
+    "workbench.colorTheme": "Dracula"
 }

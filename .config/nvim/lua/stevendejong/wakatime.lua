@@ -14,7 +14,7 @@ end
 
 local function periodicPrintWakaTime()
     printWakaTime()
-    vim.defer_fn(periodicPrintWakaTime, 300000)  -- 300000 ms = 5 minuten
+    vim.defer_fn(periodicPrintWakaTime, 1800000)  -- 300000 ms = 5 minuten
 end
 
 periodicPrintWakaTime()
