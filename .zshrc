@@ -3,6 +3,8 @@ export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$HOME/.dotnet/tools:$PATH
 export TMPDIR=~/tmp/
 export EDITOR='nvim'
 export SPACESHIP_CONFIG="$HOME/.config/spaceship.zsh"
+# export SSH_ASKPASS=/usr/bin/xaskpass
+# export SUDO_ASKPASS=/usr/bin/xaskpass
 
 export ZSH=$HOME/.oh-my-zsh
 
@@ -40,7 +42,7 @@ plugins=(
     zsh-completions
     zsh-autosuggestions
     autoupdate
-    wakatime
+    # wakatime
     bgnotify)
 
     fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src

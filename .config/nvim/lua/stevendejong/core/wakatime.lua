@@ -1,4 +1,4 @@
-local notify = require("notify")
+--[[local notify = require("notify")
 vim.notify = notify
 
 local function printWakaTime()
@@ -18,4 +18,4 @@ local function periodicPrintWakaTime()
 end
 
 periodicPrintWakaTime()
-
+]]--

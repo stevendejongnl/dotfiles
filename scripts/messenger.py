@@ -49,6 +49,9 @@ def start_messenger(messenger: str) -> None:
         elif messenger == "whatsapp-nativefier-d40211":
             subprocess.Popen(["whatsapp-nativefier"])
 
+        elif messenger == "slack":
+            subprocess.Popen(["slack"])
+
         else:
             print(f"No command specified for messenger '{messenger}'")
 
@@ -71,6 +74,7 @@ def reset_messengers(messengers: list[str] = []) -> None:
 if __name__ == "__main__":
     messengers: list[str] = [
             "google-chat-linux",
-            "whatsapp-nativefier-d40211"
+            "whatsapp-nativefier-d40211",
+            "slack",
             ]
     reset_messengers(messengers=messengers)
