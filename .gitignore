@@ -7,3 +7,4 @@
 .config/nvim/plugin/packer_compiled.lua
 .config/nvim/pack
 .config/tmux/plugins
+.config/gtk-3.0/bookmarks
