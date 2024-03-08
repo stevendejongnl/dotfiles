@@ -4,7 +4,7 @@ return {
     event = "VimEnter",
     config = function()
         require("dashboard").setup {
-            theme = "doom"
+            theme = "hyper"
         }
         vim.keymap.set("n", "<C-q>", vim.cmd.Dashboard)
     end,

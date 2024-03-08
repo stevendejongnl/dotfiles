@@ -19,6 +19,16 @@ alias vncserver="x11vnc -display :0"
 alias wakepc="wol -i 192.168.2.3 f0:2f:74:1b:b2:96"
 alias connect-wifi="python $HOME/scripts/connect_wifi.py"
 
+function _man() {
+    tmux split-window -t "$TMUX_PANE" "man $*; read"
+}
+alias man=_man
+
+function _tldr() {
+    tmux split-window -t "$TMUX_PANE" "tldr $*; read"
+}
+alias tldr=_tldr
+
 function _tmux()
 {
     if [[ $# == 0 ]] && command tmux ls >& /dev/null; then
