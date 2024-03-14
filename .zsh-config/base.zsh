@@ -1,12 +1,7 @@
 export TMPDIR=~/tmp/
 export EDITOR='nvim'
 export SPACESHIP_CONFIG="$HOME/.config/spaceship.zsh"
-
 export ZSH=$HOME/.oh-my-zsh
-
-bindkey '^R' history-incremental-pattern-search-backward
-bindkey "^P" vi-up-line-or-history
-bindkey "^N" vi-down-line-or-history
 
 source $ZSH/oh-my-zsh.sh
 source $HOME/.aliases

@@ -1,71 +1,8 @@
 export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 
-source $HOME/.zshrc-base
-
-if [[ ! -d ~/.zplug ]];then
-    git clone https://github.com/zplug/zplug ~/.zplug
-fi
-source ~/.zplug/init.zsh
-zplug "plugins/git", from:oh-my-zsh
-zplug "plugins/sudo", from:oh-my-zsh
-zplug "plugins/command-not-found", from:oh-my-zsh
-zplug "zsh-users/zsh-syntax-highlighting", defer:2
-zplug "zsh-users/zsh-history-substring-search"
-zplug "zsh-users/zsh-completions"
-zplug "spaceship-prompt/spaceship-prompt", use:spaceship.zsh, from:github, as:theme
-if ! zplug check --verbose; then
-    printf "Install? [y/N]: "
-    if read -q; then
-        echo; zplug install
-    fi
-fi
-
-zplug load
-
-eval "$(direnv hook zsh)"
-
-plugins=(
-    direnv
-    git
-    docker
-    history-substring-search
-    zsh-completions
-    zsh-autosuggestions
-    autoupdate
-    # wakatime
-    bgnotify
-)
-
-fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
-
-autoload -U cominit && compinit
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
-
-autoload -U add-zsh-hook
-check_nvm() {
-    local nvmrc_path="$(nvm_find_nvmrc)"
-
-    if [ -n "$nvmrc_path" ]; then
-        local nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
-
-        if [ "$nvmrc_node_version" = "N/A" ]; then
-            nvm install
-        elif [ "$nvmrc_node_version" != "$(nvm version)" ]; then
-            nvm use
-        fi
-    elif [ -f package.json ]; then
-        nodeVersion=$(jq -r '.engines.node | select(.!=null)' package.json )
-
-        if [ ! -z $nodeVersion ] && [[ ! $(nvm current) = "^v$nodeVersion" ]]; then
-            echo "found $nodeVersion in package.json engine"
-            nvm use ${nodeVersion:0:2}
-        fi
-    fi
-}
-add-zsh-hook chpwd check_nvm
-check_nvm
+source $HOME/.zsh-config/autocompletion.zsh
+source $HOME/.zsh-config/base.zsh
+source $HOME/.zsh-config/plugins.zsh
+source $HOME/.zsh-config/nvm.zsh
 
 eval "$(zoxide init --cmd cd zsh)"

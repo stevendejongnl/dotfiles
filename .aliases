@@ -29,6 +29,11 @@ function _tldr() {
 }
 alias tldr=_tldr
 
+function _bat() {
+    tmux split-window -t "$TMUX_PANE" "/usr/bin/bat $*; read"
+}
+alias bat=_bat
+
 function _tmux()
 {
     if [[ $# == 0 ]] && command tmux ls >& /dev/null; then
@@ -64,10 +69,10 @@ alias btairpods="bluecon airpods"
 alias btsoundbar="bluecon soundbar"
 
 function cloudsuite_cli {
-   CSCONFIG="$HOME/workspace/trydent/docker-compose.yml"
-   CSCONFIG_OVERRIDE="$HOME/workspace/trydent/docker-compose.override.yml"
-   CSTESTCONFIG="$HOME/workspace/trydent/docker-compose.tests.yml"
-   CSACONFIG="$HOME/workspace/cloudsuite-app/docker-compose.yml"
+   CSCONFIG="$HOME/workspace/cloudsuite/trydent/docker-compose.yml"
+   CSCONFIG_OVERRIDE="$HOME/workspace/cloudsuite/trydent/docker-compose.override.yml"
+   CSTESTCONFIG="$HOME/workspace/cloudsuite/trydent/docker-compose.tests.yml"
+   CSACONFIG="$HOME/workspace/cloudsuite/cloudsuite-app/docker-compose.yml"
 
    POSITIONAL_ARGS=()
 

@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Shutdown
+Comment=Shut down the system
+Exec=shutdown now
+Icon=system-shutdown
+Terminal=false
+Type=Application
+Categories=System;Utility;
