@@ -15,5 +15,8 @@
     ],
     "git.fetchOnPull": true,
     "git.pruneOnFetch": true,
-    "workbench.colorTheme": "Dracula"
+    "extensions.experimental.affinity": {
+        "asvetliakov.vscode-neovim": 1
+    },
+    "workbench.colorTheme": "Atom One Dark"
 }

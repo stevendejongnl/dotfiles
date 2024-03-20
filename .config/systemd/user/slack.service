@@ -2,7 +2,7 @@
 Description=Slack
 
 [Service]
-ExecStart=/usr/bin/slack
+ExecStart=/usr/bin/slack -u
 
 [Install]
 WantedBy=autostart.target

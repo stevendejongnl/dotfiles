@@ -2,7 +2,7 @@
 Description=WhatsApp
 
 [Service]
-ExecStart=whatsapp-nativefier
+ExecStart=/opt/brave-bin/brave --profile-directory=Default --app-id=hnpfjngllnobngcgfapefoaidbinmjnm
 
 [Install]
 WantedBy=autostart.target
