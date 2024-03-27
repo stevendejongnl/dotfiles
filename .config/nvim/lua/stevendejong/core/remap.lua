@@ -1,7 +1,9 @@
 vim.g.mapleader = " "
 
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
-vim.keymap.set("n", "<C-S-w>", vim.cmd.Ex)
+
+-- Show diagnostics
+vim.keymap.set("n", "<leader>i", ":lua vim.diagnostic.open_float(0, {scope='line'})<CR>")
 
 -- Move Lines up and down
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
@@ -16,16 +18,6 @@ vim.keymap.set("n", "N", "Nzzzv")
 
 -- Copy buffer (void register)
 vim.keymap.set("x", "<leader>p", [["_dP]])
-
--- Copy to system clipboard
-vim.keymap.set({"n", "v"}, "<leader>y", [["+y]])
-vim.keymap.set("n", "<leader>Y", [["+Y]])
-
--- Delete (void register) 
-vim.keymap.set({"n", "v"}, "<leader>d", [["_d]])
-
--- Control C to escape
-vim.keymap.set("i", "<C-c>", "<Esc>")
 
 -- Disable Capital Q for quiting
 vim.keymap.set("n", "Q", "<nop>")

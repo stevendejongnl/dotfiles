@@ -30,6 +30,19 @@ vim.opt.isfname:append("@-@")
 
 vim.opt.updatetime = 50
 
+_G.delete_directory = function()
+    local choice = vim.fn.input('Delete this directory? (y/n): ')
+    if choice == 'y' then
+        local path = vim.fn.expand('%:p:h')
+        vim.fn.delete(path, 'rf')
+        vim.cmd('e .')
+    end
+end
+
+vim.cmd([[
+    autocmd FileType netrw nnoremap <buffer> D :lua delete_directory()<CR>
+]])
+
 -- Transparent background
 vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
 vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
