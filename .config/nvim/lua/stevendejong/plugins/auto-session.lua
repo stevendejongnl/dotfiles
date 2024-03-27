@@ -1,5 +1,6 @@
 return {
     "rmagatti/auto-session",
+    enabled = false,
     config = function()
         require("auto-session").setup {
             -- auto_session_enable_last_session = false,
