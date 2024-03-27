@@ -31,12 +31,16 @@ vim.opt.isfname:append("@-@")
 vim.opt.updatetime = 50
 
 _G.delete_directory = function()
-    local choice = vim.fn.input('Delete this directory? (y/n): ')
+    local cursor_pos = vim.api.nvim_win_get_cursor(0)
+    local line = vim.api.nvim_buf_get_lines(0, cursor_pos[1]-1, cursor_pos[1], false)[1]
+    local path = vim.fn.fnamemodify(line, ':p:h')
+    local file = path .. '/' .. line
+    local choice = vim.fn.input('Delete ' .. file .. '? (y/n): ')
     if choice == 'y' then
-        local path = vim.fn.expand('%:p:h')
-        vim.fn.delete(path, 'rf')
+        vim.fn.delete(file, 'rf')
         vim.cmd('e .')
     end
+    print(file)
 end
 
 vim.cmd([[
