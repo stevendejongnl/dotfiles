@@ -12,7 +12,9 @@ vim.opt.colorcolumn = "120"
 
 vim.opt.smartindent = true
 
-vim.opt.wrap = false
+vim.opt.textwidth = 120
+vim.opt.wrap = true
+vim.opt.wrapmargin = 0
 
 vim.opt.swapfile = false
 vim.opt.backup = false

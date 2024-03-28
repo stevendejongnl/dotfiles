@@ -1,5 +1,6 @@
 [Unit]
 Description=nextcloud
+After=graphical.target
 
 [Service]
 ExecStart=nextcloud

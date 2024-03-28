@@ -1,6 +1,6 @@
 [Unit]
 Description=Network Manager Applet
-After=dwm.target
+After=graphical.target
 
 [Service]
 ExecStart=nm-applet

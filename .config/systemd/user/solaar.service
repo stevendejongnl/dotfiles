@@ -1,6 +1,6 @@
 [Unit]
 Description=Solaar
-After=dwm.target
+After=graphical.target
 
 [Service]
 ExecStart=solaar -w hide

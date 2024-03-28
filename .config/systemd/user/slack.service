@@ -1,5 +1,6 @@
 [Unit]
 Description=Slack
+After=graphical.target
 
 [Service]
 ExecStart=/usr/bin/slack -u

@@ -1,9 +1,0 @@
-[Unit]
-Description=Slimbook Battery
-After=dwm.target
-
-[Service]
-ExecStart=python3 /usr/share/slimbookbattery/src/slimbookbatteryindicator.py
-
-[Install]
-WantedBy=autostart.target

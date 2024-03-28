@@ -1,6 +1,6 @@
 [Unit]
 Description=flameshot
-After=dwm.target
+After=graphical.target
 
 [Service]
 ExecStart=flameshot

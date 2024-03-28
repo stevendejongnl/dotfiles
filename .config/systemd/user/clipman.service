@@ -1,6 +1,6 @@
 [Unit]
 Description=Clipman
-After=dwm.target
+After=graphical.target
 
 [Service]
 ExecStart=xfce4-clipman
