@@ -6,13 +6,8 @@ getDefaultSink() {
 
     if [[ $description == *"Starship/Matisse"* ]]; then
         echo "Speakers"
-<<<<<<< HEAD
-    elif [[ $description == *"Family 17h/19h HD Audio"* || $description == *"Navi 21/23 HDMI/DP"* ]]; then
-        echo "HDMI Speakers"
-=======
-    elif [[ $description == *"Renoir Radeon"* ]]; then
+    elif [[ $description == *"Family 17h/19h HD Audio"* || $description == *"Navi 21/23 HDMI/DP"* || $description == *"Renoir Radeon"* ]]; then
         echo "Speakers HDMI"
->>>>>>> 1819e91 (some tweaks, dynamic xinput touchpad)
     elif [[ $description == *"airpods"* ]]; then
         echo "AirPods"
     elif [[ $description == *"MDR-XB950N1"* ]]; then
