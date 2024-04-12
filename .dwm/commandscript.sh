@@ -1,0 +1,1 @@
+/home/stevendejong/builds/suckless/dwm/spotify.sh
