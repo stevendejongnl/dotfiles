@@ -31,8 +31,6 @@ plugins=(
     zsh-completions
     zsh-autosuggestions
     autoupdate
-    # wakatime
-    bgnotify
 )
 
 fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
