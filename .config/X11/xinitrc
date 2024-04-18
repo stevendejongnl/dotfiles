@@ -1,5 +1,7 @@
 xrdb $HOME/.config/X11/xresources
 
+export _JAVA_AWT_WM_NONREPARENTING=1
+
 # This rule is needed when no display manager is used (Removed sddm and use startx instead)
 dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY
 
