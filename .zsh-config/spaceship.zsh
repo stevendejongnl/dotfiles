@@ -5,6 +5,7 @@ SPACESHIP_EXEC_TIOME_ELEAPSED=1
 
 SPACESHIP_PROMPT_ORDER=(
   time          # Time stampts section
+  exec_time     # Execution time
   user          # Username section
   host          # Hostname section
   dir           # Current directory section
@@ -20,5 +21,4 @@ SPACESHIP_PROMPT_ORDER=(
   line_sep      # Line break
   # vi_mode       # Vi-mode indicator
   char          # Prompt character
-  exec_time     # Execution time
 )

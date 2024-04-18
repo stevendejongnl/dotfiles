@@ -8,3 +8,5 @@
 .config/nvim/pack
 .config/tmux/plugins
 .config/gtk-3.0/bookmarks
+
+.zsh-config/spaceship.zsh.zwc
