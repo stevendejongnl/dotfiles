@@ -2,7 +2,7 @@ return {
   "VonHeikemen/lsp-zero.nvim",
   enabled = true,
   branch = "v3.x",
-  event = "VeryLazy",
+  event = "InsertEnter",
   dependencies = {      
     -- LSP Support
     {"neovim/nvim-lspconfig"},

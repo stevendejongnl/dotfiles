@@ -1,7 +1,7 @@
 return {
   "ellisonleao/carbon-now.nvim",
   enabled = true,
-  event = "VeryLazy",
+  event = "InsertEnter",
   cmd = "CarbonNow",
   opts = {
     bg = "#1F816D",
