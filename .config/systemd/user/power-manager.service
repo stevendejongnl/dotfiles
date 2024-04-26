@@ -1,9 +1,0 @@
-[Unit]
-Description=Power Manager
-After=graphical.target
-
-[Service]
-ExecStart=xfce4-power-manager
-
-[Install]
-WantedBy=autostart.target
