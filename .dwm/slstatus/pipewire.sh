@@ -52,5 +52,6 @@ case $1 in
         pamixer --toggle-mute
         ;;
     *)
-        echo "${VOLUME_INFO} • "
+        echo "[ ${VOLUME_INFO} ]"
+        ;;
 esac
