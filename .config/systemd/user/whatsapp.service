@@ -3,7 +3,7 @@ Description=WhatsApp
 After=graphical.target
 
 [Service]
-ExecStart=/opt/brave-bin/brave --profile-directory=Default --app-id=hnpfjngllnobngcgfapefoaidbinmjnm
+ExecStart=/usr/bin/whatsapp-for-linux
 
 [Install]
 WantedBy=autostart.target
