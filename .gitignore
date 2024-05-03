@@ -2,8 +2,8 @@
 
 *.code-workspace
 
-.dwm/package-updates/last-run
-.dwm/package-updates/status
+.dwm/slstatus/package-updates/last-run
+.dwm/slstatus/package-updates/status
 .config/nvim/plugin/packer_compiled.lua
 .config/nvim/pack
 .config/tmux/plugins
