@@ -5,6 +5,15 @@ vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 -- Show diagnostics
 vim.keymap.set("n", "<leader>i", ":lua vim.diagnostic.open_float(0, {scope='line'})<CR>")
 
+-- LSP
+-- vim.keymap.set("n", "<leader>ca", ":lua vim.lsp.buf.code_action()<CR>")
+-- vim.keymap.set("n", "<leader>cd", ":lua vim.lsp.buf.definition()<CR>")
+-- vim.keymap.set("n", "<leader>cr", ":lua vim.lsp.buf.references()<CR>")
+-- vim.keymap.set("n", "<leader>ci", ":lua vim.lsp.buf.implementation()<CR>")
+-- vim.keymap.set("n", "<leader>cs", ":lua vim.lsp.buf.signature_help()<CR>")
+-- vim.keymap.set("n", "<leader>ch", ":lua vim.lsp.buf.hover()<CR>")
+-- vim.keymap.set("n", "<leader>cf", ":lua vim.lsp.buf.formatting()<CR>")
+
 -- Move Lines up and down
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")

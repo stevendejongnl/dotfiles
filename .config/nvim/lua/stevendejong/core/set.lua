@@ -32,22 +32,22 @@ vim.opt.isfname:append("@-@")
 
 vim.opt.updatetime = 50
 
-_G.delete_directory = function()
-    local cursor_pos = vim.api.nvim_win_get_cursor(0)
-    local line = vim.api.nvim_buf_get_lines(0, cursor_pos[1]-1, cursor_pos[1], false)[1]
-    local path = vim.fn.fnamemodify(line, ':p:h')
-    local file = path .. '/' .. line
-    local choice = vim.fn.input('Delete ' .. file .. '? (y/n): ')
-    if choice == 'y' then
-        vim.fn.delete(file, 'rf')
-        vim.cmd('e .')
-    end
-    print(file)
-end
-
-vim.cmd([[
-    autocmd FileType netrw nnoremap <buffer> D :lua delete_directory()<CR>
-]])
+-- _G.delete_directory = function()
+--     local cursor_pos = vim.api.nvim_win_get_cursor(0)
+--     local line = vim.api.nvim_buf_get_lines(0, cursor_pos[1]-1, cursor_pos[1], false)[1]
+--     local path = vim.fn.fnamemodify(line, ':p:h')
+--     local file = path .. '/' .. line
+--     local choice = vim.fn.input('Delete ' .. file .. '? (y/n): ')
+--     if choice == 'y' then
+--         vim.fn.delete(file, 'rf')
+--         vim.cmd('e .')
+--     end
+--     print(file)
+-- end
+--
+-- vim.cmd([[
+--     autocmd FileType netrw nnoremap <buffer> D :lua delete_directory()<CR>
+-- ]])
 
 -- Transparent background
 vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
