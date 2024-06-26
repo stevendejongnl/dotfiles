@@ -2,51 +2,26 @@
 
 # Global aliases
 alias vim="clear && nvim"
-alias cat="/usr/bin/bat"
-alias clear_ram="sudo sh -c 'free -h; echo 3 > /proc/sys/vm/drop_caches; swapoff -a; swapon -a; free -h'"
-alias lg="lazygit"
-alias update-portainer="$HOME/update-portainer.sh"
+alias vi="clear && nvim"
 alias vpn="sudo openvpn --config .openvpn3/autoload/cloudsuite.ovpn"
 alias vpnlocal="sudo openvpn --config .openvpn3/autoload/HomeAccess_StevendeJong.ovpn"
-#alias vpn3="openvpn3 session-start --config .openvpn3/autoload/cloudsuite.ovpn"
-alias vpn3="vpn"
-#alias vpn3local="sudo openvpn3 session-start --config .openvpn3/autoload/HomeAccess_StevendeJong.ovpn"
-alias vpn3local="vpnlocal"
 alias change-wallpaper="$HOME/.config/systemd/user/scripts/wallpaper.sh"
 alias used-ports="sudo lsof -i -P -n | grep LISTEN"
 alias btreset="sudo rmmod btusb && sleep 15 && sudo modprobe btusb"
-alias vncserver="x11vnc -display :0"
 alias wakepc="wol -i 192.168.2.3 f0:2f:74:1b:b2:96"
-alias connect-wifi="python $HOME/scripts/connect_wifi.py"
 
-alias pip='function _pip(){
+function _pip(){
     if [ $1 = "search" ]; then
         pip_search "$2";
     else pip "$@";
     fi;
-};_pip'
-
-function bluecon {
-    device=$1
-    if [[ $device == "headphone" ]]; then
-        systemctl start bluetooth
-        bluetoothctl connect "70:26:05:88:2E:71"
-    fi
-
-    if [[ $device == "airpods" ]]; then
-        systemctl start bluetooth
-        bluetoothctl connect "60:93:16:3C:D3:B9"
-    fi
-
-    if [[ $device == "soundbar" ]]; then
-        systemctl start bluetooth
-        bluetoothctl connect "D8:E3:A7:D1:36:71"
-    fi
 }
+alias pip="_pip"
 
-alias btheadphone="bluecon headphone"
-alias btairpods="bluecon airpods"
-alias btsoundbar="bluecon soundbar"
+function markdown(){
+  pandoc $1 | lynx -stdin
+}
+alias md="markdown"
 
 function cloudsuite_cli {
    CSCONFIG="$HOME/workspace/cloudsuite/trydent/docker-compose.yml"
@@ -133,4 +108,3 @@ function cloudsuite_cli {
 }
 
 alias cs="cloudsuite_cli"
-
