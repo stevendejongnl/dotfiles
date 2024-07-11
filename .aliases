@@ -7,104 +7,126 @@ alias vpn="sudo openvpn --config .openvpn3/autoload/cloudsuite.ovpn"
 alias vpnlocal="sudo openvpn --config .openvpn3/autoload/HomeAccess_StevendeJong.ovpn"
 alias change-wallpaper="$HOME/.config/systemd/user/scripts/wallpaper.sh"
 alias used-ports="sudo lsof -i -P -n | grep LISTEN"
-alias btreset="sudo rmmod btusb && sleep 15 && sudo modprobe btusb"
 alias wakepc="wol -i 192.168.2.3 f0:2f:74:1b:b2:96"
 
+function _bluetoothreset(){
+  if lsmod | grep -q btusb; then
+    echo "Removing btusb"
+    sudo rmmod btusb
+    echo "Sleeping for 15 seconds"
+    sleep 15
+  fi
+
+  echo "Adding btusb"
+  sudo modprobe btusb
+}
+alias bluetoothreset="_bluetoothreset"
+alias btreset="_bluetoothreset"
+alias bt-reset="_bluetoothreset"
+
 function _pip(){
-    if [ $1 = "search" ]; then
-        pip_search "$2";
-    else pip "$@";
-    fi;
+  if [ $1 = "search" ]; then
+    pip_search "$2";
+  else pip "$@";
+  fi;
 }
 alias pip="_pip"
 
 function markdown(){
+  if [ $1 = "--open" ] || [ $1 = "-o" ]; then
+    nohup flatpak run org.gnome.gitlab.somas.Apostrophe $2 > /dev/null 2>&1
+    return
+  fi
+  if [ $2 = "--open" ] || [ $2 = "-o" ]; then
+    nohup flatpak run org.gnome.gitlab.somas.Apostrophe $1 > /dev/null 2>&1 
+    return
+  fi
   pandoc $1 | lynx -stdin
 }
 alias md="markdown"
 
 function cloudsuite_cli {
-   CSCONFIG="$HOME/workspace/cloudsuite/trydent/docker-compose.yml"
-   CSCONFIG_OVERRIDE="$HOME/workspace/cloudsuite/trydent/docker-compose.override.yml"
-   CSTESTCONFIG="$HOME/workspace/cloudsuite/trydent/docker-compose.tests.yml"
-   CSACONFIG="$HOME/workspace/cloudsuite/cloudsuite-app/docker-compose.yml"
+  CSCONFIG="$HOME/workspace/cloudsuite/trydent/docker-compose.yml"
+  CSCONFIG_OVERRIDE="$HOME/workspace/cloudsuite/trydent/docker-compose.override.yml"
+  CSTESTCONFIG="$HOME/workspace/cloudsuite/trydent/docker-compose.tests.yml"
+  CSACONFIG="$HOME/workspace/cloudsuite/cloudsuite-app/docker-compose.yml"
 
-   POSITIONAL_ARGS=()
+  POSITIONAL_ARGS=()
 
-   function help {
-      echo "
-      Usage:
-      -l|--log [-c|--container]
-      -r|--redis [-c|--command]
-      -m|--migrate
-      -tr|--trydent
-      -t|--test
-      -a|--app
-      -h|--help
-      "
-   }
+  function help {
+    echo "
+    Usage:
+    -l|--log [-c|--container]
+    -r|--redis [-c|--command]
+    -m|--migrate
+    -tr|--trydent
+    -t|--test
+    -a|--app
+    -h|--help
+    "
+  }
 
-   while [[ $# -gt 0 ]]; do
-      case $1 in
-         -l|--log)
-            case $2 in
-               -c|--container)
-                  echo "Start logging for ($3)"
-                  docker logs -f $(docker-compose -f $CSCONFIG -f $CSCONFIG_OVERRIDE ps -q $3)
-                  return
-                  ;;
-               *)
-                  docker-compose -f $CSCONFIG -f $CSCONFIG_OVERRIDE logs -f
-                  return
-                  ;;
-            esac
+  while [[ $# -gt 0 ]]; do
+    case $1 in
+      -l|--log)
+        case $2 in
+          -c|--container)
+            echo "Start logging for ($3)"
+            docker logs -f $(docker-compose -f $CSCONFIG -f $CSCONFIG_OVERRIDE ps -q $3)
             return
             ;;
-         -r|--redis)
-            case $2 in
-               -c|--command)
-                  echo "Redis cli ($3)"
-                  docker-compose -f $CSCONFIG -f $CSCONFIG_OVERRIDE exec redis redis-cli $3
-                  return
-                  ;;
-               *)
-                  docker-compose -f $CSCONFIG -f $CSCONFIG_OVERRIDE exec redis redis-cli
-                  return
-                  ;;
-            esac
+          *)
+            docker-compose -f $CSCONFIG -f $CSCONFIG_OVERRIDE logs -f
             return
             ;;
-         -m|--migrate)
-            docker-compose -f $CSCONFIG -f $CSCONFIG_OVERRIDE exec trytond /srv/trytond/bin/trytond -d fixture --all -v
+        esac
+        return
+        ;;
+      -r|--redis)
+        case $2 in
+          -c|--command)
+            echo "Redis cli ($3)"
+            docker-compose -f $CSCONFIG -f $CSCONFIG_OVERRIDE exec redis redis-cli $3
             return
             ;;
-         -a|--app)
-            docker-compose -f $CSACONFIG down && xhost +local:docker; docker-compose -f $CSACONFIG up -d
+          *)
+            docker-compose -f $CSCONFIG -f $CSCONFIG_OVERRIDE exec redis redis-cli
             return
             ;;
-         -tr|trydent)
-	    docker-compose -f $CSCONFIG ${@:2}
-	    return
-	    ;;
-	 -t|--test)
-	    docker-compose -f $CSTESTCONFIG ${@:2}
-	    return
-	    ;;
-         -h|--help)
-            help
-            return
-            ;;
-         -*|--*)
-            echo "Unknown option $1"
-            return
-            ;;
-         *)
-            help
-            POSITIONAL_ARGS+=("$1")
-            shift
-            ;;
-      esac
-   done
+        esac
+        return
+        ;;
+      -m|--migrate)
+        docker-compose -f $CSCONFIG -f $CSCONFIG_OVERRIDE exec trytond /srv/trytond/bin/trytond -d fixture --all -v
+        return
+        ;;
+      -a|--app)
+        docker-compose -f $CSACONFIG down && xhost +local:docker; docker-compose -f $CSACONFIG up -d
+        return
+        ;;
+      -tr|trydent)
+        docker-compose -f $CSCONFIG ${@:2}
+        return
+        ;;
+      -t|--test)
+        docker-compose -f $CSTESTCONFIG ${@:2}
+        return
+        ;;
+      -h|--help)
+        help
+        return
+        ;;
+      -*|--*)
+        echo "Unknown option $1"
+        return
+        ;;
+      *)
+        help
+        POSITIONAL_ARGS+=("$1")
+        shift
+        ;;
+    esac
+  done
 }
 
 alias cs="cloudsuite_cli"
