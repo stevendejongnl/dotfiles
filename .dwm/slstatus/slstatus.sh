@@ -3,31 +3,31 @@
 SLSTATUS_DIR="$HOME/.dwm/slstatus"
 OUTPUT=""
 
-function get_battery_state() {
-  OUTPUT+="$($SLSTATUS_DIR/battery.sh)"
+get_battery_state() {
+  OUTPUT+="$("$SLSTATUS_DIR"/battery.sh)"
 }
 
-function get_cpu_usage() {
-  OUTPUT+="$($SLSTATUS_DIR/cpu-usage.sh)"
+get_cpu_usage() {
+  OUTPUT+="$("$SLSTATUS_DIR"/cpu-usage.sh)"
 }
 
-function get_memory_usage() {
-  OUTPUT+="$($SLSTATUS_DIR/memory-usage.sh)"
+get_memory_usage() {
+  OUTPUT+="$("$SLSTATUS_DIR"/memory-usage.sh)"
 }
 
-function get_package_updates() {
-  OUTPUT+="$($SLSTATUS_DIR/package-updates.sh)"
+get_package_updates() {
+  OUTPUT+="$("$SLSTATUS_DIR"/package-updates.sh)"
 }
 
-function get_pipewire() {
-  OUTPUT+="$($SLSTATUS_DIR/pipewire.sh)"
+get_pipewire() {
+  OUTPUT+="$("$SLSTATUS_DIR"/pipewire.sh)"
 }
 
-function get_bluetooth() {
-  OUTPUT+="$($SLSTATUS_DIR/bluetooth.sh)"
+get_bluetooth() {
+  OUTPUT+="$("$SLSTATUS_DIR"/bluetooth.sh)"
 }
 
-function get_date() {
+get_date() {
   OUTPUT+="[   $(date '+%F %T') ]"
 }
 

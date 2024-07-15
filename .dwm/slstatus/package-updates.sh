@@ -29,7 +29,7 @@ if [ "$((current_time - last_run))" -ge "$interval" ]; then
         updates_aur=0
     fi
 
-    updates="$((updates_arch + updates_aur))"
+    # updates="$((updates_arch + updates_aur))"
 
     echo "$updates_arch/$updates_aur" > "$status_file"
     echo "$current_time" > "$last_run_file"

@@ -11,4 +11,4 @@ get_memory_usage() {
   echo "[  $used/$total - $swap ]"
 }
 
-echo "$(get_memory_usage)"
+get_memory_usage

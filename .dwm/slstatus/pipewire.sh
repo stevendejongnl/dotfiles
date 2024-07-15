@@ -23,11 +23,11 @@ getDefaultSource() {
     echo "${description}"
 }
 
-VOLUME=$(pamixer --get-volume)
+# VOLUME=$(pamixer --get-volume)
 VOLUME_HUMAN=$(pamixer --get-volume-human)
 MUTED=$(pamixer --get-mute)
 SINK=$(getDefaultSink)
-SOURCE=$(getDefaultSource)
+# SOURCE=$(getDefaultSource)
 
 VOLUME_INFO="${VOLUME_HUMAN} - ${SINK}"
 

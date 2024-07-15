@@ -5,4 +5,4 @@ get_cpu_usage() {
   echo "[  $cpu_usage% ]"
 }
 
-echo "$(get_cpu_usage)"
+get_cpu_usage
