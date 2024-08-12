@@ -3,7 +3,8 @@
 # Global aliases
 alias vim="clear && nvim"
 alias vi="clear && nvim"
-alias vpn="sudo openvpn --config .openvpn3/autoload/cloudsuite.ovpn"
+#alias vpn="sudo openvpn --config .openvpn3/autoload/cloudsuite.ovpn"
+alias vpn="./.openvpn3/openvpn.sh"
 alias vpnlocal="sudo openvpn --config .openvpn3/autoload/HomeAccess_StevendeJong.ovpn"
 alias change-wallpaper="$HOME/.config/systemd/user/scripts/wallpaper.sh"
 alias used-ports="sudo lsof -i -P -n | grep LISTEN"

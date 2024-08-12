@@ -10,3 +10,5 @@
 .config/gtk-3.0/bookmarks
 
 .zsh-config/spaceship.zsh.zwc
+
+.openvpn3/autoload
