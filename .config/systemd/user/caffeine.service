@@ -1,0 +1,9 @@
+[Unit]
+Description=Caffeine
+After=graphical.target
+
+[Service]
+ExecStart=caffeine-indicator
+
+[Install]
+WantedBy=autostart.target
