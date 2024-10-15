@@ -24,6 +24,7 @@ zplug load
 eval "$(direnv hook zsh)"
 
 plugins=(
+    poetry
     direnv
     git
     docker
