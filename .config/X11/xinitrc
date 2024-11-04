@@ -22,5 +22,8 @@ xset fp rehash &
 # Hide cursor after x time
 unclutter -idle 3 &
 
+# Remap caps lock to escape
+setxkbmap -option caps:escape
+
 exec dwm > $HOME/.logs/dwm.log 2>&1
 
