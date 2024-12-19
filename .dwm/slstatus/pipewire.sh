@@ -4,9 +4,9 @@ getDefaultSink() {
     defaultSink=$(pactl info | awk -F : '/Default Sink:/{print $2}')
     description=$(pactl list sinks | sed -n "/${defaultSink}/,/Description/s/^\s*Description: \(.*\)/\1/p")
 
-    if [[ $description == *"Family 17h/19h HD Audio"* || $description == *"Starship/Matisse"* ]]; then
+    if [[ $description == *"Family 17h/19h"* || $description == *"Starship/Matisse"* ]]; then
         echo "Speakers"
-    elif [[ $description == *"Navi 21/23 HDMI/DP"* || $description == *"Renoir Radeon"* ]]; then
+    elif [[ $description == *"Navi 21/23"* || $description == *"Renoir Radeon"* ]]; then
         echo "Speakers HDMI"
     elif [[ $description == *"airpods"* ]]; then
         echo "AirPods"

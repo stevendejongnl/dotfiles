@@ -13,6 +13,27 @@ alias wakepc="wol -i 192.168.2.3 f0:2f:74:1b:b2:96"
 
 alias disable-middle-mouse="/usr/bin/xinput set-button-map $(/usr/bin/xinput list --id-only 'ETPS/2 Elantech Touchpad') 1 1 3 4 5 6 7"
 
+function _mosaic_updates() {
+  git switch master
+  git pull
+  # check if branch exists
+  if git show-ref --verify --quiet refs/heads/$(date +'%Y-%m-%d')_node_dependency_updates; then
+    echo "Branch exists"
+    git switch $(date +'%Y-%m-%d')_node_dependency_updates
+  else
+    echo "Branch does not exist"
+    git switch -c $(date +'%Y-%m-%d')_node_dependency_updates
+  fi
+  npm run upgrade
+}
+alias mosaic_updates="_mosaic_updates"
+
+function _mosaic_push_updates() {
+  git commit -m "chore(dependencies): weekly update ($(date +'%Y-%m-%d'))"
+  git push --set-upstream origin $(date +'%Y-%m-%d')_node_dependency_updates -o merge_request.create -o merge_request.title="chore(dependencies): weekly update ($(date +'%Y-%m-%d'))" -o merge_request.description="ELM-368  \n  \nCloses #1" -o merge_request.merge_when_pipeline_succeeds
+}
+alias mosaic_push_updates="_mosaic_push_updates"
+
 function _bluetoothreset(){
   if lsmod | grep -q btusb; then
     echo "Removing btusb"
