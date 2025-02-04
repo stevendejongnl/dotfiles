@@ -3,7 +3,7 @@ Description=Caffeine
 After=graphical.target
 
 [Service]
-ExecStart=caffeine-indicator
+ExecStart=/usr/bin/caffeine
 
 [Install]
 WantedBy=autostart.target

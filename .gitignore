@@ -12,3 +12,4 @@
 .zsh-config/spaceship.zsh.zwc
 
 .openvpn3/autoload
+nohup.out
