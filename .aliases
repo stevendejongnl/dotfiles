@@ -10,10 +10,11 @@ alias change-wallpaper="$HOME/.config/systemd/user/scripts/wallpaper.sh"
 alias used-ports="sudo lsof -i -P -n"
 alias used-ports-listen="sudo lsof -i -P -n | grep LISTEN"
 alias vim_homeassistant="vim scp://root@192.168.1.77:24//config/"
-
+alias convert="magick convert"
 alias disable-middle-mouse="/usr/bin/xinput set-button-map $(/usr/bin/xinput list --id-only 'ETPS/2 Elantech Touchpad') 1 1 3 4 5 6 7"
 
-function _mosaic_updates() {
+
+function _mosaic_update() {
   git switch master
   git pull
   # check if branch exists
@@ -26,13 +27,37 @@ function _mosaic_updates() {
   fi
   npm run upgrade
 }
-alias mosaic_updates="_mosaic_updates"
+alias mosaic_update="_mosaic_update"
 
-function _mosaic_push_updates() {
+function _mosaic_push_update() {
   git commit -m "chore(dependencies): weekly update ($(date +'%Y-%m-%d'))"
   git push --set-upstream origin $(date +'%Y-%m-%d')_node_dependency_updates -o merge_request.create -o merge_request.title="chore(dependencies): weekly update ($(date +'%Y-%m-%d'))" -o merge_request.description="ELM-368  \n  \nCloses #1" -o merge_request.merge_when_pipeline_succeeds
 }
-alias mosaic_push_updates="_mosaic_push_updates"
+alias mosaic_push_update="_mosaic_push_update"
+
+function _mosaic() {
+  tmux new-window -c /home/stevendejong/workspace/cloudsuite/mosaic/eslint-plugins/ \; \
+  split-window -h -c /home/stevendejong/workspace/cloudsuite/mosaic/shared/ \; \
+  select-pane -t 1 \; \
+  split-window -v -c /home/stevendejong/workspace/cloudsuite/mosaic/elements/ \; \
+  select-pane -t 3 \; \
+  split-window -v -c /home/stevendejong/workspace/cloudsuite/mosaic/components/
+}
+alias mosaic='_mosaic'
+
+function _mosaic_updates() {
+  tmux new-window -c /home/stevendejong/workspace/cloudsuite/mosaic/eslint-plugins/ \; \
+  send-keys 'mosaic_update && git add -p && mosaic_push_update' C-m \; \
+  split-window -h -c /home/stevendejong/workspace/cloudsuite/mosaic/shared/ \; \
+  send-keys 'mosaic_update && git add -p && mosaic_push_update' C-m \; \
+  select-pane -t 1 \; \
+  split-window -v -c /home/stevendejong/workspace/cloudsuite/mosaic/elements/ \; \
+  send-keys 'mosaic_update && git add -p && mosaic_push_update' C-m \; \
+  select-pane -t 3 \; \
+  split-window -v -c /home/stevendejong/workspace/cloudsuite/mosaic/components/ \; \
+  send-keys 'mosaic_update && git add -p && mosaic_push_update' C-m
+}
+alias mosaic_updates='_mosaic_updates'
 
 function _bluetoothreset(){
   if lsmod | grep -q btusb; then
