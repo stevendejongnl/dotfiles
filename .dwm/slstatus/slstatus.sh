@@ -31,13 +31,13 @@ get_date() {
   OUTPUT+="[   $(date '+%F %T') ]"
 }
 
+get_date
 get_battery_state
-get_cpu_usage
-get_memory_usage
+# get_cpu_usage
+# get_memory_usage
 get_package_updates
 get_pipewire
 get_bluetooth
-get_date
 
 printf "%s" "$OUTPUT"
 

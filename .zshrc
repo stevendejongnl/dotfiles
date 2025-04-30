@@ -1,4 +1,4 @@
-export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
+export PATH=$HOME/bin:$HOME/.local/bin:$HOME/.local/share/JetBrains/Toolbox/scripts:/usr/local/bin:$PATH
 
 source $HOME/.zsh-config/autocompletion.zsh
 source $HOME/.zsh-config/base.zsh

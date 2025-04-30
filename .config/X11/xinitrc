@@ -25,5 +25,10 @@ unclutter -idle 3 &
 # Remap caps lock to escape
 setxkbmap -option caps:escape
 
+darkman set dark &
+brightnessctl --device='amdgpu_bl1' set 255 &
+brightnessctl --device='tpacpi::kbd_backlight' set 2 &
+
+
 exec dwm > $HOME/.logs/dwm.log 2>&1
 
