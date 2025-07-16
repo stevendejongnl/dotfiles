@@ -58,7 +58,7 @@ function mosaic_update() {
   git pull
 
   local branch_name
-  branch_name=$(date +'%Y-%m-%d')_node_dependency_updates
+  branch_name=MOS-368_$(date +'%Y-%m-%d')_node_dependency_updates
 
   if git show-ref --verify --quiet refs/heads/"$branch_name"; then
     echo "Branch '$branch_name' already exists. Switching to it..."
@@ -85,14 +85,14 @@ function mosaic_push_update() {
 
   if [[ "$current_dir_name" == "shared" && "$parent_dir" == "mosaic" ]]; then
     git commit -m "fix(dependencies): weekly update ($(date +'%Y-%m-%d'))"
-    git push --set-upstream origin $(date +'%Y-%m-%d')_node_dependency_updates \
+    git push --set-upstream origin MOS-368_$(date +'%Y-%m-%d')_node_dependency_updates \
       -o merge_request.create \
       -o merge_request.title="fix(dependencies): weekly update ($(date +'%Y-%m-%d'))" \
       -o merge_request.description="MOS-368  \n  \nCloses #1" \
       -o merge_request.merge_when_pipeline_succeeds
   else
     git commit -m "chore(dependencies): weekly update ($(date +'%Y-%m-%d'))"
-    git push --set-upstream origin $(date +'%Y-%m-%d')_node_dependency_updates \
+    git push --set-upstream origin MOS-368_$(date +'%Y-%m-%d')_node_dependency_updates \
       -o merge_request.create \
       -o merge_request.title="chore(dependencies): weekly update ($(date +'%Y-%m-%d'))" \
       -o merge_request.description="MOS-368  \n  \nCloses #1" \

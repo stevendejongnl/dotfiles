@@ -3,7 +3,9 @@
 source $HOME/scripts/mosaic.sh
 source $HOME/scripts/git.sh
 
+alias unlock="$HOME/unlock"
 alias vpn="$HOME/.openvpn3/openvpn.sh"
+alias vpn3="$HOME/.openvpn3/openvpn3.sh"
 alias change-wallpaper="$HOME/.config/systemd/user/scripts/wallpaper.sh"
 alias used-ports="sudo lsof -i -P -n"
 alias used-ports-listen="sudo lsof -i -P -n | grep LISTEN"
@@ -25,6 +27,8 @@ function _bluetoothreset(){
 alias bluetoothreset="_bluetoothreset"
 alias btreset="_bluetoothreset"
 alias bt-reset="_bluetoothreset"
+alias got="git"
+alias gut="git"
 
 function _pip(){
   if [ $1 = "search" ]; then
@@ -89,18 +93,21 @@ function cloudsuite_cli {
         case $2 in
           -c|--command)
             echo "Redis cli ($3)"
-            docker compose -f $CSCONFIG -f $CSCONFIG_OVERRIDE exec redis redis-cli $3
+            # docker compose -f $CSCONFIG -f $CSCONFIG_OVERRIDE exec redis redis-cli $3
+            docker compose -f $CSCONFIG exec redis redis-cli $3
             return
             ;;
           *)
-            docker compose -f $CSCONFIG -f $CSCONFIG_OVERRIDE exec redis redis-cli
+            # docker compose -f $CSCONFIG -f $CSCONFIG_OVERRIDE exec redis redis-cli
+            docker compose -f $CSCONFIG exec redis redis-cli
             return
             ;;
         esac
         return
         ;;
       -m|--migrate)
-        docker compose -f $CSCONFIG -f $CSCONFIG_OVERRIDE exec trytond /srv/trytond/bin/trytond -d fixture --all -v
+        # docker compose -f $CSCONFIG -f $CSCONFIG_OVERRIDE exec trytond /srv/trytond/bin/trytond -d fixture --all -v
+        docker compose -f $CSCONFIG exec trytond /srv/trytond/bin/trytond -d fixture --all -v
         return
         ;;
       -a|--app)

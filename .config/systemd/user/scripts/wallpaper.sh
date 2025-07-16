@@ -8,14 +8,14 @@ LOG_FILE="$WALLPAPERS_DIR/log.txt"
 echo "===== $(date) =====" >> "$LOG_FILE"
 echo "Searching for wallpapers in: $WALLPAPERS_DIR" >> "$LOG_FILE"
 
-# Functie om door mappen te loopen en bestanden aan de lijst toe te voegen
+
 function find_wallpapers {
     local dir="$1"
     local file
-    shopt -s nullglob  # Voorkomt problemen als er geen bestanden zijn in de map
+    shopt -s nullglob
     for file in "$dir"/*; do
         if [[ -d "$file" ]]; then
-            find_wallpapers "$file"  # Recursief door de submap loopen
+            find_wallpapers "$file"
         elif [[ -f "$file" && $file =~ \.(jpg|jpeg|png|gif)$ ]]; then
             echo "$file" >> "$LOG_FILE"
             wallpapers_list+=("$file")
