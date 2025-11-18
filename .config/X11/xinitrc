@@ -14,8 +14,8 @@ pgrep -x deja-dup > /dev/null || deja-dup &
 
 xsetroot -cursor_name left_ptr
 
-xset +fp $HOME/.local/share/fonts
-xset +fp /usr/share/fonts &
+#xset +fp $HOME/.local/share/fonts
+#xset +fp /usr/share/fonts &
 fc-cache -fv
 xset fp rehash &
 

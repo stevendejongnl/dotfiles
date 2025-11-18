@@ -2,7 +2,10 @@
 
 source $HOME/scripts/mosaic.sh
 source $HOME/scripts/git.sh
+source $HOME/scripts/raspberry-pis.sh
+source $HOME/scripts/cleanup.sh
 
+alias reload-aliases='source ~/.aliases && echo "Aliases reloaded ✅"'
 alias unlock="$HOME/unlock"
 alias vpn="$HOME/.openvpn3/openvpn.sh"
 alias vpn3="$HOME/.openvpn3/openvpn3.sh"
@@ -12,6 +15,8 @@ alias used-ports-listen="sudo lsof -i -P -n | grep LISTEN"
 alias vim_homeassistant="vim scp://root@192.168.1.77:24//config/"
 alias convert="magick convert"
 alias disable-middle-mouse="/usr/bin/xinput set-button-map $(/usr/bin/xinput list --id-only 'ETPS/2 Elantech Touchpad') 1 1 3 4 5 6 7"
+alias watch-usb="$HOME/scripts/watch-usb.sh"
+alias morgenctl="echo 'Hello, good morning! Have a great day! ☀️YOU ARE AWESOME!🌟'"
 
 function _bluetoothreset(){
   if lsmod | grep -q btusb; then
@@ -29,27 +34,6 @@ alias btreset="_bluetoothreset"
 alias bt-reset="_bluetoothreset"
 alias got="git"
 alias gut="git"
-
-function _pip(){
-  if [ $1 = "search" ]; then
-    pip_search "$2";
-  else pip "$@";
-  fi;
-}
-alias pip="_pip"
-
-function markdown(){
-  if [ $1 = "--open" ] || [ $1 = "-o" ]; then
-    nohup flatpak run org.gnome.gitlab.somas.Apostrophe $2 > /dev/null 2>&1
-    return
-  fi
-  if [ $2 = "--open" ] || [ $2 = "-o" ]; then
-    nohup flatpak run org.gnome.gitlab.somas.Apostrophe $1 > /dev/null 2>&1 
-    return
-  fi
-  pandoc $1 | lynx -stdin
-}
-alias md="markdown"
 
 function cloudsuite_cli {
   TRYDENT_DIR="$HOME/workspace/cloudsuite/trydent"
